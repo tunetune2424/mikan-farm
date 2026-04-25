@@ -41,7 +41,7 @@ export default function Footer() {
       </div>
 
       <div className="footer-bottom">
-        <p>© 2024 伊佐みかん園. All rights reserved.</p>
+        <p>© {new Date().getFullYear()} 伊佐みかん園. All rights reserved.</p>
       </div>
     </footer>
   )

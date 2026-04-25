@@ -740,6 +740,24 @@ section {
 .btn-submit:hover .arrow { transform: translateX(6px); }
 .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; }
 
+.form-feedback {
+  padding: 14px 18px;
+  font-size: 14px;
+  border-radius: 2px;
+  margin-bottom: 16px;
+  line-height: 1.6;
+}
+.form-feedback--success {
+  background: rgba(255, 248, 234, 0.12);
+  border: 1px solid rgba(242, 168, 119, 0.5);
+  color: #FFF8EA;
+}
+.form-feedback--error {
+  background: rgba(200, 60, 60, 0.15);
+  border: 1px solid rgba(200, 60, 60, 0.4);
+  color: #FFD0D0;
+}
+
 .contact-success {
   padding: 48px;
   text-align: left;
