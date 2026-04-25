@@ -1,20 +1,20 @@
-import { useState, useEffect } from 'react'   // ① importが必要
+import { useState, useEffect } from 'react'
 
-export default function Nav() {               // ② 関数でくるむ
+export default function Nav() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
 
-  useEffect(() => {                           // ③ useEffectでくるむ
+  useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 40)
     window.addEventListener('scroll', handler, { passive: true })
     return () => window.removeEventListener('scroll', handler)
   }, [])
 
-  return (                                    // ④ returnの中にJSX
+  return (
     <>
-      <nav className={`nav${scrolled ? ' scrolled' : ''}`}>
-        <a href="#hero" className="nav-logo">
-          <div className="nav-logo-mark">🍊</div>
+      <nav className={`nav${scrolled ? ' scrolled' : ''}`} aria-label="メインナビゲーション">
+        <a href="#hero" className="nav-logo" aria-label="伊佐みかん園 トップへ">
+          <div className="nav-logo-mark" aria-hidden="true">🍊</div>
           <span className="nav-logo-text">伊佐みかん園</span>
         </a>
 
@@ -28,12 +28,21 @@ export default function Nav() {               // ② 関数でくるむ
         <button
           className={`nav-hamburger${open ? ' open' : ''}`}
           onClick={() => setOpen(o => !o)}
+          aria-label={open ? 'メニューを閉じる' : 'メニューを開く'}
+          aria-expanded={open}
+          aria-controls="mobile-menu"
         >
-          <span /><span /><span />
+          <span aria-hidden="true" />
+          <span aria-hidden="true" />
+          <span aria-hidden="true" />
         </button>
       </nav>
 
-      <div className={`mobile-menu${open ? ' open' : ''}`}>
+      <div
+        id="mobile-menu"
+        className={`mobile-menu${open ? ' open' : ''}`}
+        aria-hidden={!open}
+      >
         <a href="#about" onClick={() => setOpen(false)}>農家紹介</a>
         <a href="#products" onClick={() => setOpen(false)}>商品</a>
         <a href="#philosophy" onClick={() => setOpen(false)}>こだわり</a>

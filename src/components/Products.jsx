@@ -15,7 +15,7 @@ export default function Products() {
         <div className="featured-info">
           <span className="featured-badge">人気No.1</span>
           <h3 className="featured-name serif">タンカン</h3>
-          <p className="featured-desc">やんばるの寒暖差で育った沖縄を代表する柑橘。濃厚な甘みとジューシーな果汁が特徴で、1〜2月の限られた時期にしか味わえません。</p>
+          <p className="featured-desc">やんばるの山々が生む大きな寒暖差が、果肉に糖度をぎゅっと凝縮させます。濃厚な甘みとあふれる果汁は、1〜2月のほんの短い季節にしか出会えない味。畑から食卓まで、最短でお届けします。</p>
           <div className="product-price">
             <span className="price-num">3,200</span>
             <span className="price-unit">円〜 / 3kg</span>
@@ -36,7 +36,7 @@ export default function Products() {
           <div className="product-card-body">
             <span className="product-tag">沖縄の恵み</span>
             <h3 className="product-card-name">シークヮーサー</h3>
-            <p className="product-card-desc">沖縄の伝統的な柑橘。爽やかな酸味と豊かな香りで、料理・ドリンクに幅広く活躍します。</p>
+            <p className="product-card-desc">キリッとした酸味と爽やかな香りは沖縄料理に欠かせない存在。搾りたては格別で、ドリンクや調味料としても幅広く活躍します。</p>
             <span className="product-price-sm">1,800円〜 / 1kg</span>
           </div>
         </div>
@@ -50,7 +50,7 @@ export default function Products() {
           <div className="product-card-body">
             <span className="product-tag">数量限定</span>
             <h3 className="product-card-name">伊豆味柑</h3>
-            <p className="product-card-desc">伊豆味地区で古くから育てられてきた在来品種。甘みと酸味のバランスが絶妙で、地元で愛され続けています。</p>
+            <p className="product-card-desc">伊豆味の地に根ざした在来品種。甘みの中にほどよい酸味が溶け込み、食べるほどに深みが増す。地元でしか知られていない、希少な一品です。</p>
             <span className="product-price-sm">2,500円〜 / 2kg</span>
           </div>
         </div>
@@ -64,7 +64,7 @@ export default function Products() {
           <div className="product-card-body">
             <span className="product-tag">贈答用</span>
             <h3 className="product-card-name">温州みかん</h3>
-            <p className="product-card-desc">沖縄の温暖な気候で育てた温州みかん。やさしい甘みで老若男女に喜ばれる、贈り物にも最適な一品です。</p>
+            <p className="product-card-desc">沖縄の温暖な日差しをたっぷり浴びて育った、やさしい甘みのみかん。子どもからお年寄りまで喜ばれる定番の味で、大切な方への贈り物にも。</p>
             <span className="product-price-sm">2,800円〜 / 5kg</span>
           </div>
         </div>
