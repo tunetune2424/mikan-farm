@@ -1,0 +1,134 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="0.4" y2="1">
+      <stop offset="0%" stop-color="#E8F5E0"/>
+      <stop offset="100%" stop-color="#C8E8B8"/>
+    </linearGradient>
+    <linearGradient id="fruitGrad" x1="0.2" y1="0.1" x2="0.9" y2="0.9">
+      <stop offset="0%" stop-color="#D4E870"/>
+      <stop offset="40%" stop-color="#A8CC40"/>
+      <stop offset="100%" stop-color="#7EA828"/>
+    </linearGradient>
+    <linearGradient id="fruitGrad2" x1="0.2" y1="0.1" x2="0.9" y2="0.9">
+      <stop offset="0%" stop-color="#C8E060"/>
+      <stop offset="50%" stop-color="#9CBE38"/>
+      <stop offset="100%" stop-color="#6B9020"/>
+    </linearGradient>
+    <linearGradient id="sliceGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#E8F870"/>
+      <stop offset="50%" stop-color="#C8E050"/>
+      <stop offset="100%" stop-color="#A0C030"/>
+    </linearGradient>
+    <linearGradient id="leafGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#6B9B78"/>
+      <stop offset="100%" stop-color="#3D6B4F"/>
+    </linearGradient>
+    <radialGradient id="gloss" cx="30%" cy="25%" r="55%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.6)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+    </radialGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="10" stdDeviation="15" flood-color="rgba(80,120,20,0.25)"/>
+    </filter>
+    <filter id="shadowSm">
+      <feDropShadow dx="0" dy="5" stdDeviation="8" flood-color="rgba(80,120,20,0.2)"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="600" fill="url(#bgGrad)"/>
+
+  <!-- Subtle light circle -->
+  <radialGradient id="lightCircle" cx="50%" cy="45%" r="55%">
+    <stop offset="0%" stop-color="rgba(255,255,255,0.3)"/>
+    <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+  </radialGradient>
+  <rect width="800" height="600" fill="url(#lightCircle)"/>
+
+  <!-- Background branch -->
+  <path d="M0 180 C100 160 200 155 300 165 C380 173 430 180 480 175" stroke="#5A8C65" stroke-width="14" fill="none" stroke-linecap="round" opacity="0.4"/>
+  <path d="M800 120 C700 135 600 130 520 140 C460 148 420 155 380 150" stroke="#5A8C65" stroke-width="12" fill="none" stroke-linecap="round" opacity="0.35"/>
+
+  <!-- Background leaves -->
+  <ellipse cx="80" cy="170" rx="45" ry="20" fill="#4A7A58" opacity="0.4" transform="rotate(-25,80,170)"/>
+  <ellipse cx="165" cy="152" rx="40" ry="18" fill="#527D60" opacity="0.35" transform="rotate(10,165,152)"/>
+  <ellipse cx="260" cy="158" rx="42" ry="19" fill="#4A7A58" opacity="0.38" transform="rotate(-15,260,158)"/>
+  <ellipse cx="680" cy="128" rx="40" ry="17" fill="#4A7A58" opacity="0.38" transform="rotate(20,680,128)"/>
+  <ellipse cx="758" cy="112" rx="38" ry="16" fill="#527D60" opacity="0.35" transform="rotate(-10,758,112)"/>
+
+  <!-- Small background fruits -->
+  <circle cx="120" cy="145" r="22" fill="#9CBE38" opacity="0.5"/>
+  <circle cx="720" cy="125" r="20" fill="#9CBE38" opacity="0.45"/>
+  <circle cx="350" cy="148" r="18" fill="#A8CC40" opacity="0.4"/>
+
+  <!-- Floor shadow -->
+  <ellipse cx="400" cy="545" rx="220" ry="22" fill="rgba(80,120,20,0.18)"/>
+
+  <!-- Main branch holding fruits -->
+  <path d="M50 420 C150 400 260 390 370 395 C450 398 510 400 580 395 C660 390 720 385 780 380" stroke="#4A6B35" stroke-width="20" fill="none" stroke-linecap="round" filter="url(#shadowSm)"/>
+  <path d="M50 418 C150 398 260 388 370 393 C450 396 510 398 580 393" stroke="rgba(255,255,255,0.1)" stroke-width="8" fill="none" stroke-linecap="round"/>
+
+  <!-- Leaves on main branch -->
+  <ellipse cx="150" cy="388" rx="52" ry="23" fill="url(#leafGrad)" transform="rotate(-25,150,388)"/>
+  <ellipse cx="148" cy="387" rx="50" ry="21" fill="#527D60" transform="rotate(-25,148,387)" opacity="0.8"/>
+  <line x1="135" y1="378" x2="162" y2="395" stroke="#3D6B4F" stroke-width="1.5" fill="none" opacity="0.5"/>
+
+  <ellipse cx="280" cy="380" rx="55" ry="24" fill="url(#leafGrad)" transform="rotate(15,280,380)"/>
+  <ellipse cx="277" cy="379" rx="53" ry="22" fill="#4A7A58" transform="rotate(15,277,379)" opacity="0.8"/>
+
+  <ellipse cx="490" cy="377" rx="50" ry="22" fill="url(#leafGrad)" transform="rotate(-20,490,377)"/>
+  <ellipse cx="487" cy="376" rx="48" ry="20" fill="#527D60" transform="rotate(-20,487,376)" opacity="0.8"/>
+
+  <ellipse cx="650" cy="372" rx="52" ry="22" fill="url(#leafGrad)" transform="rotate(10,650,372)"/>
+
+  <!-- Fruits hanging from branch -->
+  <!-- Fruit 1 (left) -->
+  <circle cx="180" cy="470" r="52" fill="#7EA828" opacity="0.8" filter="url(#shadowSm)"/>
+  <circle cx="178" cy="467" r="50" fill="url(#fruitGrad2)"/>
+  <circle cx="178" cy="467" r="50" fill="url(#gloss)"/>
+  <rect x="176" y="417" width="5" height="16" rx="2.5" fill="#3D6B4F"/>
+  <ellipse cx="179" cy="416" rx="13" ry="6" fill="#4A7A58" transform="rotate(-10,179,416)"/>
+
+  <!-- Fruit 2 (center-left) -->
+  <circle cx="340" cy="476" r="58" fill="#8AAA28" opacity="0.85" filter="url(#shadowSm)"/>
+  <circle cx="338" cy="473" r="56" fill="url(#fruitGrad)"/>
+  <circle cx="338" cy="473" r="56" fill="url(#gloss)"/>
+  <rect x="335" y="416" width="5" height="18" rx="2.5" fill="#3D6B4F"/>
+  <ellipse cx="338" cy="415" rx="14" ry="6" fill="#4A7A58" transform="rotate(-8,338,415)"/>
+  <ellipse cx="330" cy="415" rx="12" ry="5" fill="#527D60" transform="rotate(15,330,415)"/>
+
+  <!-- Fruit 3 (center-right, sliced) - half shown -->
+  <!-- Whole fruit background -->
+  <circle cx="510" cy="460" r="60" fill="#8AAA28" filter="url(#shadow)"/>
+  <circle cx="510" cy="460" r="60" fill="url(#fruitGrad)"/>
+  <!-- Slice reveal (clip with white line suggesting cut) -->
+  <circle cx="510" cy="460" r="60" fill="url(#gloss)"/>
+  <!-- Cut cross-section overlay (right half showing inside) -->
+  <path d="M510 400 A60 60 0 0 1 510 520 Z" fill="url(#sliceGrad)"/>
+  <!-- Segment lines of slice -->
+  <line x1="510" y1="400" x2="510" y2="520" stroke="#7EA828" stroke-width="2" opacity="0.5"/>
+  <path d="M510 460 L565 415" stroke="#9CBE38" stroke-width="1.5" opacity="0.5"/>
+  <path d="M510 460 L565 505" stroke="#9CBE38" stroke-width="1.5" opacity="0.5"/>
+  <path d="M510 460 L540 415" stroke="#9CBE38" stroke-width="1.5" opacity="0.5"/>
+  <path d="M510 460 L540 505" stroke="#9CBE38" stroke-width="1.5" opacity="0.5"/>
+  <!-- Center of slice -->
+  <circle cx="530" cy="460" r="8" fill="#D4E870" opacity="0.7"/>
+  <!-- Stem -->
+  <rect x="507" y="399" width="5" height="18" rx="2.5" fill="#3D6B4F"/>
+  <ellipse cx="510" cy="398" rx="14" ry="6" fill="#4A7A58" transform="rotate(-5,510,398)"/>
+
+  <!-- Fruit 4 (right) -->
+  <circle cx="670" cy="468" r="55" fill="#7EA828" opacity="0.85" filter="url(#shadowSm)"/>
+  <circle cx="668" cy="465" r="53" fill="url(#fruitGrad2)"/>
+  <circle cx="668" cy="465" r="53" fill="url(#gloss)"/>
+  <rect x="665" y="411" width="5" height="17" rx="2.5" fill="#3D6B4F"/>
+  <ellipse cx="668" cy="410" rx="13" ry="6" fill="#4A7A58" transform="rotate(-12,668,410)"/>
+
+  <!-- Falling droplets (juice / freshness) -->
+  <ellipse cx="340" cy="548" rx="6" ry="9" fill="#C8E050" opacity="0.5" transform="rotate(10,340,548)"/>
+  <ellipse cx="355" cy="560" rx="5" ry="8" fill="#A8CC40" opacity="0.4" transform="rotate(-5,355,560)"/>
+  <ellipse cx="500" cy="535" rx="5" ry="8" fill="#C8E050" opacity="0.45" transform="rotate(5,500,535)"/>
+
+  <!-- Product label -->
+  <text x="400" y="590" font-family="'JetBrains Mono', monospace" font-size="11" fill="rgba(58,80,20,0.3)" text-anchor="middle" letter-spacing="4">SHIKUWASA — OKINAWA CITRUS</text>
+</svg>

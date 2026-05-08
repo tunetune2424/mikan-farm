@@ -1,0 +1,183 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 800" width="1000" height="800">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="0.3" y2="1">
+      <stop offset="0%" stop-color="#EAF2EE"/>
+      <stop offset="100%" stop-color="#D8E8E0"/>
+    </linearGradient>
+    <linearGradient id="boxFront" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#C4905A"/>
+      <stop offset="100%" stop-color="#A87040"/>
+    </linearGradient>
+    <linearGradient id="boxTop" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#D8A870"/>
+      <stop offset="100%" stop-color="#C4905A"/>
+    </linearGradient>
+    <linearGradient id="boxSide" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#8C5C30"/>
+      <stop offset="100%" stop-color="#7A4E25"/>
+    </linearGradient>
+    <linearGradient id="orangeGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F5B87A"/>
+      <stop offset="60%" stop-color="#E8834A"/>
+      <stop offset="100%" stop-color="#C96A35"/>
+    </linearGradient>
+    <linearGradient id="greenLeaf" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#6B9B78"/>
+      <stop offset="100%" stop-color="#3D6B4F"/>
+    </linearGradient>
+    <filter id="boxShadow" x="-20%" y="-10%" width="140%" height="130%">
+      <feDropShadow dx="0" dy="20" stdDeviation="20" flood-color="rgba(58,45,30,0.25)"/>
+    </filter>
+    <filter id="fruitShadow">
+      <feDropShadow dx="2" dy="4" stdDeviation="6" flood-color="rgba(180,80,20,0.3)"/>
+    </filter>
+    <radialGradient id="gloss" cx="30%" cy="28%" r="50%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.55)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+    </radialGradient>
+    <radialGradient id="floorGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="rgba(232,131,74,0.12)"/>
+      <stop offset="100%" stop-color="rgba(232,131,74,0)"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1000" height="800" fill="url(#bgGrad)"/>
+  <!-- Center glow -->
+  <ellipse cx="500" cy="620" rx="360" ry="100" fill="url(#floorGlow)"/>
+
+  <!-- Background decorative lines (speed / motion) -->
+  <line x1="-50" y1="350" x2="250" y2="350" stroke="rgba(58,45,30,0.07)" stroke-width="2"/>
+  <line x1="-50" y1="370" x2="200" y2="370" stroke="rgba(58,45,30,0.05)" stroke-width="1.5"/>
+  <line x1="-50" y1="390" x2="220" y2="390" stroke="rgba(58,45,30,0.06)" stroke-width="1.5"/>
+  <line x1="750" y1="350" x2="1050" y2="350" stroke="rgba(58,45,30,0.07)" stroke-width="2"/>
+  <line x1="800" y1="370" x2="1050" y2="370" stroke="rgba(58,45,30,0.05)" stroke-width="1.5"/>
+  <line x1="770" y1="390" x2="1050" y2="390" stroke="rgba(58,45,30,0.06)" stroke-width="1.5"/>
+
+  <!-- Floor shadow -->
+  <ellipse cx="500" cy="655" rx="270" ry="28" fill="rgba(58,45,30,0.15)"/>
+
+  <!-- BOX (isometric-ish 3D wooden crate) -->
+  <g filter="url(#boxShadow)">
+    <!-- Box side (right dark face) -->
+    <polygon points="720,320 720,620 620,650 620,350" fill="url(#boxSide)"/>
+    <!-- Side wood grain lines -->
+    <line x1="720" y1="360" x2="620" y2="390" stroke="rgba(0,0,0,0.1)" stroke-width="1.5"/>
+    <line x1="720" y1="400" x2="620" y2="430" stroke="rgba(0,0,0,0.1)" stroke-width="1.5"/>
+    <line x1="720" y1="440" x2="620" y2="470" stroke="rgba(0,0,0,0.1)" stroke-width="1.5"/>
+    <line x1="720" y1="480" x2="620" y2="510" stroke="rgba(0,0,0,0.1)" stroke-width="1.5"/>
+    <line x1="720" y1="520" x2="620" y2="550" stroke="rgba(0,0,0,0.1)" stroke-width="1.5"/>
+    <line x1="720" y1="560" x2="620" y2="590" stroke="rgba(0,0,0,0.1)" stroke-width="1.5"/>
+
+    <!-- Box front face -->
+    <rect x="280" y="320" width="440" height="300" rx="4" fill="url(#boxFront)"/>
+    <!-- Front wood grain lines -->
+    <line x1="280" y1="360" x2="720" y2="360" stroke="rgba(0,0,0,0.08)" stroke-width="1.5"/>
+    <line x1="280" y1="400" x2="720" y2="400" stroke="rgba(0,0,0,0.08)" stroke-width="1.5"/>
+    <line x1="280" y1="440" x2="720" y2="440" stroke="rgba(0,0,0,0.08)" stroke-width="1.5"/>
+    <line x1="280" y1="480" x2="720" y2="480" stroke="rgba(0,0,0,0.08)" stroke-width="1.5"/>
+    <line x1="280" y1="520" x2="720" y2="520" stroke="rgba(0,0,0,0.08)" stroke-width="1.5"/>
+    <line x1="280" y1="560" x2="720" y2="560" stroke="rgba(0,0,0,0.08)" stroke-width="1.5"/>
+    <!-- Vertical slats -->
+    <line x1="380" y1="320" x2="380" y2="620" stroke="rgba(0,0,0,0.06)" stroke-width="2"/>
+    <line x1="500" y1="320" x2="500" y2="620" stroke="rgba(0,0,0,0.06)" stroke-width="2"/>
+    <line x1="620" y1="320" x2="620" y2="620" stroke="rgba(0,0,0,0.06)" stroke-width="2"/>
+
+    <!-- Box top face -->
+    <polygon points="280,320 720,320 820,270 340,270" fill="url(#boxTop)"/>
+    <!-- Top grain lines -->
+    <line x1="280" y1="320" x2="340" y2="270" stroke="rgba(0,0,0,0.07)" stroke-width="1.5"/>
+    <line x1="380" y1="320" x2="438" y2="270" stroke="rgba(0,0,0,0.07)" stroke-width="1.5"/>
+    <line x1="500" y1="320" x2="558" y2="270" stroke="rgba(0,0,0,0.07)" stroke-width="1.5"/>
+    <line x1="620" y1="320" x2="678" y2="270" stroke="rgba(0,0,0,0.07)" stroke-width="1.5"/>
+    <line x1="720" y1="320" x2="820" y2="270" stroke="rgba(0,0,0,0.07)" stroke-width="1.5"/>
+    <line x1="340" y1="270" x2="820" y2="270" stroke="rgba(0,0,0,0.08)" stroke-width="1.5"/>
+    <line x1="350" y1="285" x2="820" y2="285" stroke="rgba(0,0,0,0.06)" stroke-width="1"/>
+    <line x1="360" y1="300" x2="820" y2="300" stroke="rgba(0,0,0,0.06)" stroke-width="1"/>
+
+    <!-- Top side right face -->
+    <polygon points="720,320 820,270 820,320 720,370" fill="#9A6835" opacity="0.7"/>
+  </g>
+
+  <!-- Open box lid (slightly open, revealing contents) -->
+  <!-- Lid front left panel -->
+  <polygon points="280,320 500,320 500,270 340,270" fill="#D0A060" opacity="0.85"/>
+  <!-- Lid front right panel  -->
+  <polygon points="500,320 720,320 820,270 580,270" fill="#D0A060" opacity="0.8"/>
+  <!-- Lid opening gap line -->
+  <line x1="280" y1="320" x2="720" y2="320" stroke="#5C3A1A" stroke-width="2" opacity="0.5"/>
+
+  <!-- Shredded paper padding in box -->
+  <path d="M300 300 Q340 285 380 300 Q420 315 460 300 Q500 285 540 300 Q580 315 620 300 Q660 285 700 300" stroke="#D4B870" stroke-width="3" fill="none" opacity="0.7"/>
+  <path d="M300 308 Q345 295 390 308 Q435 321 480 308 Q525 295 570 308 Q615 321 660 308 Q700 295 715 308" stroke="#C8A858" stroke-width="2.5" fill="none" opacity="0.6"/>
+
+  <!-- Fruits inside box (visible over top edge) -->
+  <!-- Fruit back row -->
+  <circle cx="370" cy="300" r="42" fill="#C96A35" opacity="0.7"/>
+  <circle cx="368" cy="297" r="40" fill="#D97840" opacity="0.8"/>
+  <circle cx="368" cy="297" r="40" fill="url(#gloss)" opacity="0.7"/>
+
+  <circle cx="500" cy="292" r="46" fill="url(#orangeGrad)"/>
+  <circle cx="500" cy="292" r="46" fill="url(#gloss)"/>
+
+  <circle cx="635" cy="298" r="43" fill="#D97840" opacity="0.85"/>
+  <circle cx="633" cy="295" r="41" fill="#E8834A" opacity="0.9"/>
+  <circle cx="633" cy="295" r="41" fill="url(#gloss)" opacity="0.8"/>
+
+  <!-- Fruit stems and leaves -->
+  <rect x="366" y="257" width="4" height="12" rx="2" fill="#3D6B4F" opacity="0.7"/>
+  <ellipse cx="369" cy="256" rx="10" ry="5" fill="#4A7A58" opacity="0.7" transform="rotate(-10,369,256)"/>
+
+  <rect x="497" y="245" width="5" height="14" rx="2" fill="#3D6B4F"/>
+  <ellipse cx="502" cy="244" rx="12" ry="5" fill="#4A7A58" transform="rotate(-12,502,244)"/>
+  <ellipse cx="493" cy="244" rx="10" ry="5" fill="#527D60" transform="rotate(15,493,244)"/>
+
+  <rect x="631" y="254" width="4" height="13" rx="2" fill="#3D6B4F" opacity="0.8"/>
+  <ellipse cx="634" cy="253" rx="11" ry="5" fill="#4A7A58" opacity="0.8" transform="rotate(-8,634,253)"/>
+
+  <!-- Sticker / label on box front -->
+  <rect x="370" y="435" width="260" height="110" rx="8" fill="rgba(250,247,242,0.9)" stroke="rgba(200,160,100,0.5)" stroke-width="1.5"/>
+  <!-- Label content -->
+  <text x="500" y="465" font-family="'Noto Serif JP', Georgia, serif" font-size="14" fill="#3A2D1E" text-anchor="middle" font-weight="600" letter-spacing="2">伊佐みかん園</text>
+  <line x1="390" y1="475" x2="610" y2="475" stroke="rgba(58,45,30,0.2)" stroke-width="1"/>
+  <text x="500" y="496" font-family="Georgia, serif" font-size="11" fill="#6B5A45" text-anchor="middle" letter-spacing="3" font-style="italic">Isa Mikan Farm</text>
+  <text x="500" y="518" font-family="'Noto Sans JP', sans-serif" font-size="11" fill="#9A8B74" text-anchor="middle" letter-spacing="1">沖縄県本部町伊豆味産</text>
+  <!-- Small orange icon on label -->
+  <circle cx="500" cy="536" r="8" fill="#E8834A" opacity="0.85"/>
+  <rect x="499" y="527" width="2.5" height="4" rx="1" fill="#3D6B4F"/>
+
+  <!-- Arrow / speed marks (delivery motion) -->
+  <!-- Left arrows pointing right -->
+  <polyline points="130,420 175,440 130,460" stroke="rgba(232,131,74,0.35)" stroke-width="3" fill="none" stroke-linejoin="round"/>
+  <polyline points="100,420 145,440 100,460" stroke="rgba(232,131,74,0.25)" stroke-width="2.5" fill="none" stroke-linejoin="round"/>
+  <polyline points="160,435 195,450 160,465" stroke="rgba(232,131,74,0.2)" stroke-width="2" fill="none" stroke-linejoin="round"/>
+
+  <!-- Right arrows pointing right -->
+  <polyline points="825,420 870,440 825,460" stroke="rgba(232,131,74,0.35)" stroke-width="3" fill="none" stroke-linejoin="round"/>
+  <polyline points="855,420 900,440 855,460" stroke="rgba(232,131,74,0.25)" stroke-width="2.5" fill="none" stroke-linejoin="round"/>
+  <polyline points="885,430 920,447 885,464" stroke="rgba(232,131,74,0.2)" stroke-width="2" fill="none" stroke-linejoin="round"/>
+
+  <!-- Decorative citrus slice background (large, subtle) -->
+  <circle cx="880" cy="160" r="90" fill="none" stroke="rgba(232,131,74,0.15)" stroke-width="2"/>
+  <circle cx="880" cy="160" r="70" fill="none" stroke="rgba(232,131,74,0.12)" stroke-width="1.5"/>
+  <!-- Slice segments -->
+  <line x1="880" y1="70" x2="880" y2="250" stroke="rgba(232,131,74,0.12)" stroke-width="1.5"/>
+  <line x1="793" y1="113" x2="967" y2="207" stroke="rgba(232,131,74,0.12)" stroke-width="1.5"/>
+  <line x1="793" y1="207" x2="967" y2="113" stroke="rgba(232,131,74,0.12)" stroke-width="1.5"/>
+
+  <!-- Small floating leaves (fresh feel) -->
+  <ellipse cx="200" cy="240" rx="22" ry="10" fill="#6B9B78" opacity="0.4" transform="rotate(-30,200,240)"/>
+  <ellipse cx="218" cy="225" rx="18" ry="8" fill="#527D60" opacity="0.35" transform="rotate(15,218,225)"/>
+  <ellipse cx="780" cy="220" rx="20" ry="9" fill="#6B9B78" opacity="0.4" transform="rotate(20,780,220)"/>
+  <ellipse cx="760" cy="205" rx="16" ry="7" fill="#527D60" opacity="0.35" transform="rotate(-25,760,205)"/>
+
+  <!-- Floating sparkles / freshness dots -->
+  <circle cx="220" cy="170" r="3" fill="#E8834A" opacity="0.35"/>
+  <circle cx="240" cy="185" r="2" fill="#F2A877" opacity="0.4"/>
+  <circle cx="210" cy="192" r="2.5" fill="#E8834A" opacity="0.3"/>
+  <circle cx="770" cy="165" r="3" fill="#E8834A" opacity="0.35"/>
+  <circle cx="755" cy="180" r="2" fill="#F2A877" opacity="0.4"/>
+
+  <!-- Bottom label -->
+  <text x="500" y="770" font-family="'JetBrains Mono', monospace" font-size="11" fill="rgba(58,45,30,0.2)" text-anchor="middle" letter-spacing="4">DELIVERY — SHIPPED DAY OF HARVEST</text>
+</svg>
