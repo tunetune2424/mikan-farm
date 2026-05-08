@@ -1,3 +1,5 @@
+import tankanImg from '../assets/たんかん.jpeg'
+
 export default function Products() {
   return (
     <section id="products" className="products">
@@ -8,9 +10,7 @@ export default function Products() {
 
       <div className="featured">
         <div className="featured-image">
-          <div className="ph ph-orange" style={{ width: '100%', height: '100%' }}>
-            <span className="ph-label">タンカン</span>
-          </div>
+          <img src={tankanImg} alt="タンカン" />
         </div>
         <div className="featured-info">
           <span className="featured-badge">人気No.1</span>
@@ -29,9 +29,7 @@ export default function Products() {
       <div className="product-grid">
         <div className="product-card">
           <div className="product-card-image">
-            <div className="ph ph-green" style={{ width: '100%', height: '100%' }}>
-              <span className="ph-label">シークヮーサー</span>
-            </div>
+            <img src="/src/assets/シークワーサー.jpeg" alt="シークヮーサー" />
           </div>
           <div className="product-card-body">
             <span className="product-tag">沖縄の恵み</span>
@@ -43,9 +41,7 @@ export default function Products() {
 
         <div className="product-card">
           <div className="product-card-image">
-            <div className="ph ph-dusk" style={{ width: '100%', height: '100%' }}>
-              <span className="ph-label">伊豆味柑</span>
-            </div>
+            <img src="/src/assets/いずみ紅.jpeg" alt="伊豆味柑" />
           </div>
           <div className="product-card-body">
             <span className="product-tag">数量限定</span>
@@ -57,9 +53,7 @@ export default function Products() {
 
         <div className="product-card">
           <div className="product-card-image">
-            <div className="ph ph-warm" style={{ width: '100%', height: '100%' }}>
-              <span className="ph-label">温州みかん</span>
-            </div>
+            <img src="/src/assets/温州みかん.jpeg" alt="温州みかん" />
           </div>
           <div className="product-card-body">
             <span className="product-tag">贈答用</span>

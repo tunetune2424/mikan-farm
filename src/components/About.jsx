@@ -1,11 +1,11 @@
+import aboutImg from '../assets/about.png'
+
 export default function About(){
   return(
     <section id="about" className="about">
       <div className="about-grid">
         <div className="about-image">
-          <div className="ph ph-green" style={{width:'100%', height:'100%'}}>
-            <span className="ph-label">farm</span>
-          </div>
+          <img src={aboutImg} alt="みかん農場の風景" />
           <div className="stamp">
             <span>Since</span>
             <strong>1962</strong>
