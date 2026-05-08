@@ -1,4 +1,8 @@
 import tankanImg from '../assets/たんかん.jpeg'
+import sekukwasaImg from '../assets/シークワーサー.jpeg'
+import izumiImg from '../assets/いずみ紅.jpeg'
+import wenzhouImg from '../assets/温州みかん.jpeg'
+
 
 export default function Products() {
   return (
@@ -29,7 +33,7 @@ export default function Products() {
       <div className="product-grid">
         <div className="product-card">
           <div className="product-card-image">
-            <img src="/src/assets/シークワーサー.jpeg" alt="シークヮーサー" />
+            <img src={sekukwasaImg} alt="シークヮーサー" />
           </div>
           <div className="product-card-body">
             <span className="product-tag">沖縄の恵み</span>
@@ -41,7 +45,7 @@ export default function Products() {
 
         <div className="product-card">
           <div className="product-card-image">
-            <img src="/src/assets/いずみ紅.jpeg" alt="伊豆味柑" />
+            <img src={izumiImg} alt="伊豆味柑" />
           </div>
           <div className="product-card-body">
             <span className="product-tag">数量限定</span>
@@ -53,7 +57,7 @@ export default function Products() {
 
         <div className="product-card">
           <div className="product-card-image">
-            <img src="/src/assets/温州みかん.jpeg" alt="温州みかん" />
+            <img src={wenzhouImg} alt="温州みかん" />
           </div>
           <div className="product-card-body">
             <span className="product-tag">贈答用</span>
