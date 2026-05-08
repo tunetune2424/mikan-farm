@@ -1,7 +1,3 @@
-import soilImg from '../assets/soil.svg'
-import harvestImg from '../assets/harvest.svg'
-import deliveryImg from '../assets/delivery.svg'
-
 export default function Philosophy() {
   return (
     <section id="philosophy" className="philosophy">
@@ -13,7 +9,9 @@ export default function Philosophy() {
 
       <div className="philo-item">
         <div className="philo-image">
-          <img src={soilImg} alt="やんばるの土を育てる" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '4px' }} />
+          <div className="ph ph-green" style={{ width: '100%', height: '100%' }}>
+            <span className="ph-label">soil</span>
+          </div>
         </div>
         <div className="philo-text">
           <span className="philo-num">01</span>
@@ -31,7 +29,9 @@ export default function Philosophy() {
 
       <div className="philo-item reverse">
         <div className="philo-image">
-          <img src={harvestImg} alt="手摘みにこだわる" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '4px' }} />
+          <div className="ph ph-orange" style={{ width: '100%', height: '100%' }}>
+            <span className="ph-label">harvest</span>
+          </div>
         </div>
         <div className="philo-text">
           <span className="philo-num">02</span>
@@ -49,7 +49,9 @@ export default function Philosophy() {
 
       <div className="philo-item">
         <div className="philo-image">
-          <img src={deliveryImg} alt="収穫即日出荷" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '4px' }} />
+          <div className="ph ph-forest" style={{ width: '100%', height: '100%' }}>
+            <span className="ph-label">delivery</span>
+          </div>
         </div>
         <div className="philo-text">
           <span className="philo-num">03</span>
