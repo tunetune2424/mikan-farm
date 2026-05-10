@@ -1,7 +1,7 @@
-import tankanImg from '../assets/たんかん.jpeg'
-import sekukwasaImg from '../assets/シークワーサー.jpeg'
-import izumiImg from '../assets/いずみ紅.jpeg'
-import wenzhouImg from '../assets/温州みかん.jpeg'
+import tankanImg from '../assets/tankan.jpeg'
+import sekukwasaImg from '../assets/shikuwasa.jpg'
+import izumiImg from '../assets/izumibeni.jpeg'
+import wenzhouImg from '../assets/unsyuumikan.jpeg'
 
 
 export default function Products() {
@@ -66,6 +66,7 @@ export default function Products() {
             <span className="product-price-sm">2,800円〜 / 5kg</span>
           </div>
         </div>
+
       </div>
     </section>
   )
