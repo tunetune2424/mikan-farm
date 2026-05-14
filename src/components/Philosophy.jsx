@@ -1,3 +1,5 @@
+import soilImg from '../assets/soil.jpeg'
+
 export default function Philosophy() {
   return (
     <section id="philosophy" className="philosophy">
@@ -9,9 +11,7 @@ export default function Philosophy() {
 
       <div className="philo-item">
         <div className="philo-image">
-          <div className="ph ph-green" style={{ width: '100%', height: '100%' }}>
-            <span className="ph-label">soil</span>
-          </div>
+          <img src={soilImg} alt="やんばるの土" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
         </div>
         <div className="philo-text">
           <span className="philo-num">01</span>
