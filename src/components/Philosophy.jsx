@@ -1,4 +1,6 @@
 import soilImg from '../assets/soil.jpeg'
+import harvestImg from '../assets/harvest.png'
+import deliveryImg from '../assets/delivery.png'
 
 export default function Philosophy() {
   return (
@@ -29,9 +31,7 @@ export default function Philosophy() {
 
       <div className="philo-item reverse">
         <div className="philo-image">
-          <div className="ph ph-orange" style={{ width: '100%', height: '100%' }}>
-            <span className="ph-label">harvest</span>
-          </div>
+          <img src={harvestImg} alt="手摘み収穫" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
         </div>
         <div className="philo-text">
           <span className="philo-num">02</span>
@@ -49,9 +49,7 @@ export default function Philosophy() {
 
       <div className="philo-item">
         <div className="philo-image">
-          <div className="ph ph-forest" style={{ width: '100%', height: '100%' }}>
-            <span className="ph-label">delivery</span>
-          </div>
+          <img src={deliveryImg} alt="収穫即日出荷" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
         </div>
         <div className="philo-text">
           <span className="philo-num">03</span>

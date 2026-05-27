@@ -13,9 +13,9 @@ export default function Nav() {
   return (
     <>
       <nav className={`nav${scrolled ? ' scrolled' : ''}`} aria-label="メインナビゲーション">
-        <a href="#hero" className="nav-logo" aria-label="伊佐みかん園 トップへ">
+        <a href="#hero" className="nav-logo" aria-label="山原みかん農園 トップへ">
           <div className="nav-logo-mark" aria-hidden="true">🍊</div>
-          <span className="nav-logo-text">伊佐みかん園</span>
+          <span className="nav-logo-text">山原みかん農園</span>
         </a>
 
         <div className="nav-links">

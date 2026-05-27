@@ -1,21 +1,21 @@
 const products = [
   {
     id: 1,
-    name: "伊佐みかん（Mサイズ）",
+    name: "山原みかん（Mサイズ）",
     desc: "甘みと酸味のバランスが絶妙な定番サイズ。家族で楽しむのに最適です。",
     price: "¥1,800 / 2kg",
     img: "https://picsum.photos/seed/mikan1/400/300",
   },
   {
     id: 2,
-    name: "伊佐みかん（Lサイズ）",
+    name: "山原みかん（Lサイズ）",
     desc: "果肉たっぷりの大玉みかん。贈り物にも喜ばれる一品です。",
     price: "¥2,200 / 2kg",
     img: "https://picsum.photos/seed/mikan2/400/300",
   },
   {
     id: 3,
-    name: "伊佐みかん（詰め合わせ）",
+    name: "山原みかん（詰め合わせ）",
     desc: "M・Lサイズを詰め合わせたギフトセット。熨斗対応も可能です。",
     price: "¥3,500 / 3kg",
     img: "https://picsum.photos/seed/mikan3/400/300",

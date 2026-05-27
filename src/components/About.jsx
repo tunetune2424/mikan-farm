@@ -1,4 +1,4 @@
-import aboutImg from '../assets/about.jpeg'
+import aboutImg from '../assets/farm.png'
 
 export default function About(){
   return(
@@ -14,7 +14,7 @@ export default function About(){
         <div className="about-text">
           <p className="section-label">About</p>
           <h2 className="section-title serif">三代続く<br />やんばるの農家</h2>
-          <p className="lead">沖縄県本部町伊豆味の山あいで、祖父の代から三代にわたってタンカンやシークヮーサーを育ててきました。やんばるの山々に囲まれた大きな寒暖差が、濃厚な甘みと豊かな香りを生み出します。</p>
+          <p className="lead">沖縄県国頭郡今帰仁村の山あいで、祖父の代から三代にわたってタンカンやシークヮーサーを育ててきました。やんばるの山々に囲まれた大きな寒暖差が、濃厚な甘みと豊かな香りを生み出します。</p>
           <div className="stats">
             <div className="stat">
               <span className="stat-num">60+</span>

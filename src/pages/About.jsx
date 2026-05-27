@@ -1,3 +1,5 @@
+import farmImg from '../assets/farm.png'
+
 export default function About() {
   return (
     <div className="bg-[#FAF7F2]">
@@ -6,13 +8,13 @@ export default function About() {
         <div className="flex flex-col md:flex-row gap-12 items-center">
           <div className="md:w-1/2">
             <img
-              src="https://picsum.photos/seed/mikan-farm/600/400"
-              alt="伊佐みかん園の風景"
+              src={farmImg}
+              alt="山原みかん農園の風景"
               className="w-full rounded-2xl shadow-md object-cover"
             />
           </div>
           <div className="md:w-1/2">
-            <h2 className="text-2xl font-bold text-[#3A2D1E] mb-4">伊佐みかん園について</h2>
+            <h2 className="text-2xl font-bold text-[#3A2D1E] mb-4">山原みかん農園について</h2>
             <p className="text-[#3A2D1E] leading-relaxed mb-4">
               私たちの農園は、沖縄の温暖な気候と豊かな土壌に恵まれた小さな家族経営の農園です。
               創業から30年、みかん一筋で歩んできました。

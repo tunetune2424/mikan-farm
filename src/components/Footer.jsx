@@ -5,9 +5,9 @@ export default function Footer() {
         <div>
           <div className="footer-brand">
             <span>🍊</span>
-            <span className="footer-brand-text">伊佐みかん園</span>
+            <span className="footer-brand-text">山原みかん農園</span>
           </div>
-          <p className="footer-tag">Isa Mikan Farm</p>
+          <p className="footer-tag">Yanbaru Mikan Farm</p>
           <p className="footer-desc">やんばるの大自然が育てた、沖縄の恵みをあなたの食卓へ。</p>
         </div>
 
@@ -24,7 +24,7 @@ export default function Footer() {
         <div className="footer-col">
           <h4>Info</h4>
           <ul>
-            <li>沖縄県国頭郡本部町伊豆味</li>
+            <li>沖縄県国頭郡今帰仁村字諸志</li>
             <li>info@isa-mikan.jp</li>
             <li>9:00〜17:00</li>
           </ul>
@@ -41,7 +41,7 @@ export default function Footer() {
       </div>
 
       <div className="footer-bottom">
-        <p>© {new Date().getFullYear()} 伊佐みかん園. All rights reserved.</p>
+        <p>© {new Date().getFullYear()} 山原みかん農園. All rights reserved.</p>
       </div>
     </footer>
   )
