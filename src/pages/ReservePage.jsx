@@ -1,0 +1,357 @@
+import { useState } from 'react'
+import { Link } from 'react-router-dom'
+import './ReservePage.css'
+
+const GAS_URL          = import.meta.env.VITE_GAS_URL          || ''
+const LINE_ACCOUNT_URL = import.meta.env.VITE_LINE_ACCOUNT_URL || '#'
+const PHONE            = import.meta.env.VITE_FARM_PHONE       || ''
+const EMAIL            = import.meta.env.VITE_FARM_EMAIL       || ''
+
+const AM_TIMES = ['9:00', '10:00', '11:00']
+const PM_TIMES = ['13:00', '14:00', '15:00', '16:00']
+const TOTAL_STEPS = 5
+
+const today = new Date()
+const todayStr = [
+  today.getFullYear(),
+  String(today.getMonth() + 1).padStart(2, '0'),
+  String(today.getDate()).padStart(2, '0'),
+].join('-')
+
+export default function ReservePage() {
+  const [step, setStep] = useState(1)
+  const [form, setForm] = useState({
+    date: '',
+    timeSlot: '',
+    arrivalTime: '',
+    adults: 2,
+    children: 0,
+    name: '',
+    tel: '',
+    email: '',
+  })
+  const [submitting, setSubmitting] = useState(false)
+  const [error, setError] = useState('')
+  const [done, setDone] = useState(false)
+
+  const times = form.timeSlot === '午前' ? AM_TIMES : PM_TIMES
+
+  function next() { setError(''); setStep(s => s + 1) }
+  function back() { setError(''); setStep(s => s - 1) }
+
+  async function handleSubmit() {
+    if (!GAS_URL) {
+      setDone(true)
+      return
+    }
+    setSubmitting(true)
+    setError('')
+    try {
+      const res = await fetch(GAS_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          source: 'web',
+          date: form.date,
+          timeSlot: form.timeSlot,
+          arrivalTime: form.arrivalTime,
+          adults: form.adults,
+          children: form.children,
+          name: form.name,
+          tel: form.tel,
+          email: form.email,
+        }),
+      })
+      const data = await res.json()
+      if (data.status === 'duplicate') {
+        setError('この日程はすでにご予約済みです。別の日程でお試しください。')
+        return
+      }
+      setDone(true)
+    } catch {
+      setError('送信に失敗しました。しばらく経ってからもう一度お試しください。')
+    } finally {
+      setSubmitting(false)
+    }
+  }
+
+  if (done) {
+    return <CompletePage lineUrl={LINE_ACCOUNT_URL} phone={PHONE} email={EMAIL} />
+  }
+
+  return (
+    <div className="res-page">
+      <header className="res-header">
+        <Link to="/calendar" className="res-back">← 空き状況に戻る</Link>
+        <div className="res-title-wrap">
+          <span className="res-emoji">🍊</span>
+          <h1 className="res-title">みかん狩り 予約フォーム</h1>
+        </div>
+      </header>
+
+      <div className="res-body">
+        <div className="res-steps" aria-label={`ステップ ${step} / ${TOTAL_STEPS}`}>
+          {Array.from({ length: TOTAL_STEPS }, (_, i) => (
+            <div
+              key={i}
+              className={`res-step-dot ${i + 1 < step ? 'done' : ''} ${i + 1 === step ? 'current' : ''}`}
+            />
+          ))}
+        </div>
+        <p className="res-step-label">STEP {step} / {TOTAL_STEPS}</p>
+
+        {step === 1 && (
+          <div className="res-step-body">
+            <h2 className="res-step-title">日付を選んでください</h2>
+            <input
+              type="date"
+              className="res-date-input"
+              value={form.date}
+              min={todayStr}
+              onChange={e => setForm(f => ({ ...f, date: e.target.value, timeSlot: '', arrivalTime: '' }))}
+            />
+            <button className="res-btn" disabled={!form.date} onClick={next}>
+              次へ
+            </button>
+          </div>
+        )}
+
+        {step === 2 && (
+          <div className="res-step-body">
+            <h2 className="res-step-title">時間帯を選んでください</h2>
+            <p className="res-step-date">{formatDate(form.date)}</p>
+            <div className="res-radio-group">
+              {['午前', '午後'].map(slot => (
+                <label
+                  key={slot}
+                  className={`res-radio-label ${form.timeSlot === slot ? 'selected' : ''}`}
+                >
+                  <input
+                    type="radio"
+                    name="timeSlot"
+                    value={slot}
+                    checked={form.timeSlot === slot}
+                    onChange={() => setForm(f => ({ ...f, timeSlot: slot, arrivalTime: '' }))}
+                  />
+                  <span className="res-radio-text">
+                    {slot}
+                    <span className="res-radio-sub">
+                      {slot === '午前' ? '9:00〜12:00' : '13:00〜17:00'}
+                    </span>
+                  </span>
+                </label>
+              ))}
+            </div>
+            <div className="res-btn-row">
+              <button className="res-btn-back" onClick={back}>戻る</button>
+              <button className="res-btn" disabled={!form.timeSlot} onClick={next}>次へ</button>
+            </div>
+          </div>
+        )}
+
+        {step === 3 && (
+          <div className="res-step-body">
+            <h2 className="res-step-title">来園時間を選んでください</h2>
+            <p className="res-step-date">{formatDate(form.date)}　{form.timeSlot}</p>
+            <div className="res-time-group">
+              {times.map(t => (
+                <label
+                  key={t}
+                  className={`res-time-label ${form.arrivalTime === t ? 'selected' : ''}`}
+                >
+                  <input
+                    type="radio"
+                    name="arrivalTime"
+                    value={t}
+                    checked={form.arrivalTime === t}
+                    onChange={() => setForm(f => ({ ...f, arrivalTime: t }))}
+                  />
+                  {t}
+                </label>
+              ))}
+            </div>
+            <div className="res-btn-row">
+              <button className="res-btn-back" onClick={back}>戻る</button>
+              <button className="res-btn" disabled={!form.arrivalTime} onClick={next}>次へ</button>
+            </div>
+          </div>
+        )}
+
+        {step === 4 && (
+          <div className="res-step-body">
+            <h2 className="res-step-title">人数を入力してください</h2>
+            <div className="res-count-list">
+              <CountRow
+                label="大人"
+                sub="中学生以上"
+                value={form.adults}
+                min={1}
+                onChange={v => setForm(f => ({ ...f, adults: v }))}
+              />
+              <CountRow
+                label="子ども"
+                sub="小学生以下"
+                value={form.children}
+                min={0}
+                onChange={v => setForm(f => ({ ...f, children: v }))}
+              />
+            </div>
+            <p className="res-count-total">合計 {form.adults + form.children} 名</p>
+            <div className="res-btn-row">
+              <button className="res-btn-back" onClick={back}>戻る</button>
+              <button className="res-btn" onClick={next}>次へ</button>
+            </div>
+          </div>
+        )}
+
+        {step === 5 && (
+          <div className="res-step-body">
+            <h2 className="res-step-title">連絡先を入力してください</h2>
+            <div className="res-form-list">
+              <label className="res-field">
+                <span className="res-field-label">
+                  お名前 <span className="res-required">必須</span>
+                </span>
+                <input
+                  type="text"
+                  className="res-input"
+                  placeholder="田中 太郎"
+                  value={form.name}
+                  onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
+                />
+              </label>
+              <label className="res-field">
+                <span className="res-field-label">
+                  電話番号 <span className="res-required">必須</span>
+                </span>
+                <input
+                  type="tel"
+                  className="res-input"
+                  placeholder="090-0000-0000"
+                  value={form.tel}
+                  onChange={e => setForm(f => ({ ...f, tel: e.target.value }))}
+                />
+              </label>
+              <label className="res-field">
+                <span className="res-field-label">
+                  メールアドレス <span className="res-optional">任意</span>
+                </span>
+                <input
+                  type="email"
+                  className="res-input"
+                  placeholder="example@example.com"
+                  value={form.email}
+                  onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
+                />
+              </label>
+            </div>
+            <div className="res-summary">
+              <p>📅 {formatDate(form.date)}　{form.timeSlot}　{form.arrivalTime}〜</p>
+              <p>👥 大人 {form.adults}名・子ども {form.children}名</p>
+            </div>
+            {error && <p className="res-error">{error}</p>}
+            <div className="res-btn-row">
+              <button className="res-btn-back" onClick={back}>戻る</button>
+              <button
+                className="res-btn res-btn-submit"
+                disabled={!form.name || !form.tel || submitting}
+                onClick={handleSubmit}
+              >
+                {submitting ? '送信中…' : '予約を確定する'}
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  )
+}
+
+function CountRow({ label, sub, value, min, onChange }) {
+  return (
+    <div className="res-count-row">
+      <div className="res-count-info">
+        <span className="res-count-label">{label}</span>
+        <span className="res-count-sub">{sub}</span>
+      </div>
+      <div className="res-count-ctrl">
+        <button
+          className="res-count-btn"
+          onClick={() => onChange(Math.max(min, value - 1))}
+          disabled={value <= min}
+          aria-label={`${label}を減らす`}
+        >
+          ー
+        </button>
+        <span className="res-count-val">{value}</span>
+        <button
+          className="res-count-btn"
+          onClick={() => onChange(value + 1)}
+          aria-label={`${label}を増やす`}
+        >
+          ＋
+        </button>
+      </div>
+    </div>
+  )
+}
+
+function CompletePage({ lineUrl, phone, email }) {
+  return (
+    <div className="res-page">
+      <header className="res-header">
+        <Link to="/" className="res-back">← HPに戻る</Link>
+        <div className="res-title-wrap">
+          <span className="res-emoji">🍊</span>
+          <h1 className="res-title">伊佐みかん園</h1>
+        </div>
+      </header>
+      <div className="res-body">
+        <div className="res-complete">
+          <div className="res-complete-icon">✅</div>
+          <h2 className="res-complete-title">ご予約を受け付けました</h2>
+          <p className="res-complete-sub">当日お気をつけてお越しください🍊</p>
+        </div>
+
+        <div className="res-line-card">
+          <p className="res-line-card-title">
+            <span className="res-line-icon-wrap"><LineIcon /></span>
+            LINEでもっと便利に
+          </p>
+          <p className="res-line-card-note">友達追加は無料・任意です</p>
+          <ul className="res-line-benefits">
+            <li>キャンセル・変更がかんたん</li>
+            <li>農園の最新情報をお届け</li>
+            <li>当日の連絡もスムーズ</li>
+            <li>気軽に問い合わせできる</li>
+          </ul>
+          <a href={lineUrl} className="res-line-add-btn">
+            <LineIcon /> 友達追加する
+          </a>
+        </div>
+
+        {(phone || email) && (
+          <div className="res-contact-info">
+            <p className="res-contact-title">電話・メールでのお問い合わせ</p>
+            {phone && <p className="res-contact-item">📞 {phone}</p>}
+            {email && <p className="res-contact-item">📧 {email}</p>}
+          </div>
+        )}
+      </div>
+    </div>
+  )
+}
+
+function LineIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 32 32" fill="currentColor">
+      <path d="M16 3C8.82 3 3 7.92 3 14c0 5.07 4.35 9.35 10.35 10.7l.65.14v3.64l3.58-2.69.46-.04C24.93 25 29 20.27 29 14 29 7.92 23.18 3 16 3z"/>
+    </svg>
+  )
+}
+
+function formatDate(dateStr) {
+  if (!dateStr) return ''
+  const [y, m, d] = dateStr.split('-')
+  return `${y}年${Number(m)}月${Number(d)}日`
+}
