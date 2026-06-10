@@ -212,6 +212,11 @@
   padding: 1px 6px;
   border-radius: 4px;
 }
+.res-field-note {
+  font-size: 0.78rem;
+  color: var(--text-soft);
+  margin: 2px 0 4px;
+}
 .res-input {
   width: 100%;
   padding: 12px 14px;

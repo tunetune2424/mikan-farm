@@ -39,7 +39,29 @@ export default function ReservePage() {
   function next() { setError(''); setStep(s => s + 1) }
   function back() { setError(''); setStep(s => s - 1) }
 
+  function validateStep5() {
+    if (!form.name.trim() || form.name.trim().length < 2) {
+      setError('お名前を正しく入力してください')
+      return false
+    }
+    const telClean = form.tel.replace(/[ー\-\s]/g, '')
+    if (!/^0\d{9,10}$/.test(telClean)) {
+      setError('電話番号を正しく入力してください（例：090-1234-5678）')
+      return false
+    }
+    if (!form.email.trim()) {
+      setError('メールアドレスを入力してください')
+      return false
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim())) {
+      setError('メールアドレスの形式が正しくありません')
+      return false
+    }
+    return true
+  }
+
   async function handleSubmit() {
+    if (!validateStep5()) return
     if (!GAS_URL) {
       setDone(true)
       return
@@ -47,9 +69,10 @@ export default function ReservePage() {
     setSubmitting(true)
     setError('')
     try {
-      const res = await fetch(GAS_URL, {
+      await fetch(GAS_URL, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain' },
         body: JSON.stringify({
           source: 'web',
           date: form.date,
@@ -62,11 +85,6 @@ export default function ReservePage() {
           email: form.email,
         }),
       })
-      const data = await res.json()
-      if (data.status === 'duplicate') {
-        setError('この日程はすでにご予約済みです。別の日程でお試しください。')
-        return
-      }
       setDone(true)
     } catch {
       setError('送信に失敗しました。しばらく経ってからもう一度お試しください。')
@@ -234,8 +252,9 @@ export default function ReservePage() {
               </label>
               <label className="res-field">
                 <span className="res-field-label">
-                  メールアドレス <span className="res-optional">任意</span>
+                  メールアドレス <span className="res-required">必須</span>
                 </span>
+                <p className="res-field-note">予約確認・連絡先として使用します</p>
                 <input
                   type="email"
                   className="res-input"
@@ -254,7 +273,7 @@ export default function ReservePage() {
               <button className="res-btn-back" onClick={back}>戻る</button>
               <button
                 className="res-btn res-btn-submit"
-                disabled={!form.name || !form.tel || submitting}
+                disabled={!form.name || !form.tel || !form.email || submitting}
                 onClick={handleSubmit}
               >
                 {submitting ? '送信中…' : '予約を確定する'}

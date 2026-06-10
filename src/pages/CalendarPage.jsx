@@ -37,7 +37,6 @@ export default function CalendarPage() {
         `?key=${GOOGLE_API_KEY}` +
         `&timeMin=${encodeURIComponent(timeMin)}` +
         `&timeMax=${encodeURIComponent(timeMax)}` +
-        `&q=${encodeURIComponent('みかん狩り')}` +
         `&singleEvents=true&orderBy=startTime&maxResults=100`
       const res = await fetch(url)
       const data = await res.json()
@@ -45,8 +44,8 @@ export default function CalendarPage() {
       ;(data.items || []).forEach(ev => {
         const d = (ev.start.dateTime || ev.start.date).slice(0, 10)
         if (!map[d]) map[d] = { am: null, pm: null }
-        const t = ev.summary || ''
-        const full = t.includes('【満員】')
+        const t = (ev.summary || '').replace(/[\s　]/g, '') // 半角・全角スペース除去
+        const full = t.includes('満員')
         if (t.includes('午前')) map[d].am = full ? 'full' : 'open'
         if (t.includes('午後')) map[d].pm = full ? 'full' : 'open'
       })
