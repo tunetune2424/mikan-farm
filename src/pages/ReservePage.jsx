@@ -196,26 +196,32 @@ export default function ReservePage() {
             <h2 className="res-step-title">時間帯を選んでください</h2>
             <p className="res-step-date">{formatDate(form.date)}</p>
             <div className="res-radio-group">
-              {['午前', '午後'].map(slot => (
-                <label
-                  key={slot}
-                  className={`res-radio-label ${form.timeSlot === slot ? 'selected' : ''}`}
-                >
-                  <input
-                    type="radio"
-                    name="timeSlot"
-                    value={slot}
-                    checked={form.timeSlot === slot}
-                    onChange={() => setForm(f => ({ ...f, timeSlot: slot, arrivalTime: '' }))}
-                  />
-                  <span className="res-radio-text">
-                    {slot}
-                    <span className="res-radio-sub">
-                      {slot === '午前' ? '9:00〜12:00' : '13:00〜17:00'}
+              {['午前', '午後'].map(slot => {
+                const key = slot === '午前' ? 'am' : 'pm'
+                const unavailable = dateSlots && dateSlots[key] === null
+                return (
+                  <label
+                    key={slot}
+                    className={`res-radio-label ${form.timeSlot === slot ? 'selected' : ''} ${unavailable ? 'disabled' : ''}`}
+                  >
+                    <input
+                      type="radio"
+                      name="timeSlot"
+                      value={slot}
+                      checked={form.timeSlot === slot}
+                      disabled={unavailable}
+                      onChange={() => setForm(f => ({ ...f, timeSlot: slot, arrivalTime: '' }))}
+                    />
+                    <span className="res-radio-text">
+                      {slot}
+                      <span className="res-radio-sub">
+                        {slot === '午前' ? '9:00〜12:00' : '13:00〜17:00'}
+                      </span>
+                      {unavailable && <span className="res-radio-unavail">受付なし</span>}
                     </span>
-                  </span>
-                </label>
-              ))}
+                  </label>
+                )
+              })}
             </div>
             <div className="res-btn-row">
               <button className="res-btn-back" onClick={back}>戻る</button>

@@ -125,7 +125,22 @@
 }
 .res-radio-label:hover { border-color: var(--orange-soft); }
 .res-radio-label.selected { border-color: var(--orange); background: #FFF8F3; }
+.res-radio-label.disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  background: var(--bg-warm);
+}
+.res-radio-label.disabled:hover { border-color: var(--line); }
 .res-radio-label input { display: none; }
+.res-radio-unavail {
+  font-size: 0.72rem;
+  font-weight: normal;
+  color: #999;
+  background: #eee;
+  padding: 1px 6px;
+  border-radius: 4px;
+  width: fit-content;
+}
 .res-radio-text {
   display: flex;
   flex-direction: column;
