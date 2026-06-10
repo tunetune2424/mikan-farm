@@ -175,6 +175,7 @@ export default function CalendarPage() {
           </a>
           <p className="cal-btn-sub">予約後のキャンセル・当日連絡がスムーズ</p>
           <Link to="/reserve" className="cal-link-web">Webフォームで予約する</Link>
+          <Link to="/" className="cal-link-back">← HPに戻る</Link>
         </div>
 
         <p className="cal-note">
