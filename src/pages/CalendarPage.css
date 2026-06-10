@@ -1,0 +1,242 @@
+/* ページ全体 */
+.cal-page {
+  min-height: 100vh;
+  background: var(--bg);
+  font-family: inherit;
+  color: var(--text);
+}
+
+/* ヘッダー */
+.cal-page-header {
+  background: var(--orange);
+  color: #fff;
+  padding: 16px 20px 20px;
+  position: relative;
+}
+.cal-back {
+  color: rgba(255,255,255,0.85);
+  font-size: 0.85rem;
+  text-decoration: none;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+.cal-back:hover { color: #fff; }
+.cal-title-wrap { display: flex; align-items: center; gap: 10px; }
+.cal-emoji { font-size: 1.8rem; }
+.cal-title { font-size: 1.25rem; font-weight: bold; margin: 0; }
+
+/* 本文エリア */
+.cal-body {
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+/* デモバナー */
+.cal-demo-banner {
+  background: #FFF4E6;
+  border: 1px solid var(--orange);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 0.8rem;
+  color: var(--orange-deep);
+  margin-bottom: 14px;
+}
+
+/* 月ナビ */
+.cal-month-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 12px 0 8px;
+}
+.cal-nav-btn {
+  background: none;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  width: 36px; height: 36px;
+  font-size: 1.2rem;
+  color: var(--text);
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.15s;
+}
+.cal-nav-btn:hover { background: var(--bg-warm); }
+.cal-month-label {
+  font-size: 1.1rem;
+  font-weight: bold;
+  min-width: 120px;
+  text-align: center;
+}
+
+/* 凡例 */
+.cal-legend {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  font-size: 0.78rem;
+  color: var(--text-soft);
+  margin-bottom: 10px;
+}
+.cal-legend span { display: flex; align-items: center; gap: 4px; }
+.dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.dot.open { background: var(--green); }
+.dot.full { background: #C0392B; }
+.dot.none { background: var(--text-mute); }
+
+/* ローディング */
+.cal-loading {
+  text-align: center;
+  padding: 40px 0;
+  color: var(--text-soft);
+  font-size: 0.9rem;
+}
+.cal-spinner {
+  width: 28px; height: 28px;
+  border: 3px solid var(--line);
+  border-top-color: var(--orange);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 0 auto 10px;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* カレンダーグリッド */
+.cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 3px;
+  margin-bottom: 24px;
+}
+.cal-weekday-label {
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: var(--text-soft);
+  padding: 6px 0;
+}
+.cal-weekday-label.sun { color: #C0392B; }
+.cal-weekday-label.sat { color: #2471A3; }
+
+/* 日付セル */
+.cal-cell {
+  background: #fff;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  min-height: 64px;
+  padding: 5px 4px 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.cal-cell.empty {
+  background: transparent;
+  border-color: transparent;
+}
+.cal-cell.past {
+  background: var(--bg-warm);
+  opacity: 0.5;
+}
+.cal-cell.today {
+  border-color: var(--orange);
+  border-width: 2px;
+}
+.cal-cell.has-event {
+  background: #FFFDF9;
+}
+
+.cal-day-num {
+  font-size: 0.85rem;
+  font-weight: bold;
+  color: var(--text);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.cal-day-num.sun { color: #C0392B; }
+.cal-day-num.sat { color: #2471A3; }
+
+/* 午前・午後スロット */
+.cal-slots {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.cal-slot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1px 3px;
+  border-radius: 3px;
+  font-size: 0.68rem;
+}
+.cal-slot.open  { background: #EBF5EC; }
+.cal-slot.full  { background: #FDEDEC; }
+.cal-slot.none  { background: transparent; }
+
+.slot-label { color: var(--text-mute); font-size: 0.65rem; }
+.slot-mark  { font-weight: bold; }
+.cal-slot.open  .slot-mark { color: var(--green); }
+.cal-slot.full  .slot-mark { color: #C0392B; }
+.cal-slot.none  .slot-mark { color: var(--text-mute); }
+
+/* CTAエリア */
+.cal-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.cal-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  border-radius: 999px;
+  padding: 14px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  text-decoration: none;
+  transition: opacity 0.15s;
+}
+.cal-btn:active { opacity: 0.8; }
+.cal-btn-line {
+  background: #06C755;
+  color: #fff;
+  position: relative;
+}
+.cal-btn-badge {
+  font-size: 0.7rem;
+  font-weight: bold;
+  background: #fff;
+  color: #06C755;
+  padding: 2px 7px;
+  border-radius: 999px;
+  margin-left: 4px;
+}
+.cal-btn-sub {
+  font-size: 0.78rem;
+  color: var(--text-mute);
+  text-align: center;
+}
+.cal-link-web {
+  font-size: 0.85rem;
+  color: var(--text-soft);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+.cal-link-web:hover { color: var(--text); }
+
+.cal-note {
+  text-align: center;
+  font-size: 0.78rem;
+  color: var(--text-mute);
+}
