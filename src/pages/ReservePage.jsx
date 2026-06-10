@@ -166,6 +166,9 @@ export default function ReservePage() {
         {step === 1 && (
           <div className="res-step-body">
             <h2 className="res-step-title">日付を選んでください</h2>
+            <p className="res-step-hint">
+              <Link to="/calendar">空き状況ページ</Link>で開園日をご確認の上、選択してください
+            </p>
             <input
               type="date"
               className="res-date-input"
@@ -173,7 +176,16 @@ export default function ReservePage() {
               min={todayStr}
               onChange={e => setForm(f => ({ ...f, date: e.target.value, timeSlot: '', arrivalTime: '' }))}
             />
-            <button className="res-btn" disabled={!form.date} onClick={handleDateNext}>
+            {form.date && GOOGLE_API_KEY && !dateSlots && (
+              <p className="res-date-warn">
+                この日は開園日ではありません。別の日を選んでください。
+              </p>
+            )}
+            <button
+              className="res-btn"
+              disabled={!form.date || (!!GOOGLE_API_KEY && !dateSlots)}
+              onClick={handleDateNext}
+            >
               次へ
             </button>
           </div>

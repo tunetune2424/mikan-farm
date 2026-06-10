@@ -73,6 +73,25 @@
   border-radius: 6px;
 }
 
+.res-step-hint {
+  font-size: 0.82rem;
+  color: var(--text-soft);
+  margin-bottom: 4px;
+}
+.res-step-hint a {
+  color: var(--orange);
+  text-decoration: underline;
+}
+.res-date-warn {
+  font-size: 0.85rem;
+  color: #d9534f;
+  background: #fff5f5;
+  border: 1px solid #f5c6cb;
+  border-radius: 6px;
+  padding: 8px 12px;
+  margin-top: 8px;
+}
+
 /* 日付入力 */
 .res-date-input {
   width: 100%;
