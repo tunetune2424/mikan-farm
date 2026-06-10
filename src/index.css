@@ -97,6 +97,17 @@ a { color: inherit; text-decoration: none; }
 }
 .nav-link:hover::after { right: 0; }
 
+.nav-link-reserve {
+  background: var(--orange);
+  color: #fff !important;
+  padding: 7px 16px !important;
+  border-radius: 999px;
+  font-weight: 600;
+  transition: opacity 0.15s;
+}
+.nav-link-reserve::after { display: none; }
+.nav-link-reserve:hover { opacity: 0.85; }
+
 .nav-hamburger {
   display: none;
   width: 40px; height: 40px;

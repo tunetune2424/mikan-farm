@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false)
@@ -23,6 +24,7 @@ export default function Nav() {
           <a href="#products" className="nav-link">商品</a>
           <a href="#philosophy" className="nav-link">こだわり</a>
           <a href="#contact" className="nav-link">お問い合わせ</a>
+          <Link to="/calendar" className="nav-link nav-link-reserve">🍊 みかん狩り予約</Link>
         </div>
 
         <button
@@ -47,6 +49,7 @@ export default function Nav() {
         <a href="#products" onClick={() => setOpen(false)}>商品</a>
         <a href="#philosophy" onClick={() => setOpen(false)}>こだわり</a>
         <a href="#contact" onClick={() => setOpen(false)}>お問い合わせ</a>
+        <Link to="/calendar" onClick={() => setOpen(false)}>🍊 みかん狩り予約</Link>
       </div>
     </>
   )
