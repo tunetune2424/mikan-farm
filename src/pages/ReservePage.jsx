@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import './ReservePage.css'
 
@@ -6,6 +6,8 @@ const GAS_URL          = import.meta.env.VITE_GAS_URL          || ''
 const LINE_ACCOUNT_URL = import.meta.env.VITE_LINE_ACCOUNT_URL || '#'
 const PHONE            = import.meta.env.VITE_FARM_PHONE       || ''
 const EMAIL            = import.meta.env.VITE_FARM_EMAIL       || ''
+const GOOGLE_API_KEY   = import.meta.env.VITE_GOOGLE_API_KEY   || ''
+const CALENDAR_ID      = import.meta.env.VITE_CALENDAR_ID      || ''
 
 const AM_TIMES = ['9:00', '10:00', '11:00']
 const PM_TIMES = ['13:00', '14:00', '15:00', '16:00']
@@ -17,6 +19,30 @@ const todayStr = [
   String(today.getMonth() + 1).padStart(2, '0'),
   String(today.getDate()).padStart(2, '0'),
 ].join('-')
+
+async function fetchAvailForMonth(y, m) {
+  if (!GOOGLE_API_KEY || !CALENDAR_ID) return {}
+  const timeMin = new Date(y, m, 1).toISOString()
+  const timeMax = new Date(y, m + 1, 0, 23, 59, 59).toISOString()
+  const url =
+    `https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(CALENDAR_ID)}/events` +
+    `?key=${GOOGLE_API_KEY}` +
+    `&timeMin=${encodeURIComponent(timeMin)}` +
+    `&timeMax=${encodeURIComponent(timeMax)}` +
+    `&singleEvents=true&orderBy=startTime&maxResults=100`
+  const res = await fetch(url)
+  const data = await res.json()
+  const map = {}
+  ;(data.items || []).forEach(ev => {
+    const d = (ev.start.dateTime || ev.start.date).slice(0, 10)
+    if (!map[d]) map[d] = { am: null, pm: null }
+    const t = (ev.summary || '').replace(/[\s　]/g, '')
+    const full = t.includes('満員')
+    if (t.includes('午前')) map[d].am = full ? 'full' : 'open'
+    if (t.includes('午後')) map[d].pm = full ? 'full' : 'open'
+  })
+  return map
+}
 
 export default function ReservePage() {
   const [step, setStep] = useState(1)
@@ -30,14 +56,33 @@ export default function ReservePage() {
     tel: '',
     email: '',
   })
+  const [avail, setAvail] = useState({})
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState('')
   const [done, setDone] = useState(false)
 
+  useEffect(() => {
+    const t = new Date()
+    fetchAvailForMonth(t.getFullYear(), t.getMonth()).then(setAvail)
+    const next = new Date(t.getFullYear(), t.getMonth() + 1, 1)
+    fetchAvailForMonth(next.getFullYear(), next.getMonth()).then(m =>
+      setAvail(prev => ({ ...prev, ...m }))
+    )
+  }, [])
+
+  const dateSlots = avail[form.date] || null
   const times = form.timeSlot === '午前' ? AM_TIMES : PM_TIMES
 
   function next() { setError(''); setStep(s => s + 1) }
   function back() { setError(''); setStep(s => s - 1) }
+
+  function handleDateNext() {
+    if (GOOGLE_API_KEY && !dateSlots) {
+      setError('選択した日はみかん狩りをご利用いただけません。空き状況ページでご確認ください。')
+      return
+    }
+    next()
+  }
 
   function validateStep5() {
     if (!form.name.trim() || form.name.trim().length < 2) {
@@ -128,7 +173,7 @@ export default function ReservePage() {
               min={todayStr}
               onChange={e => setForm(f => ({ ...f, date: e.target.value, timeSlot: '', arrivalTime: '' }))}
             />
-            <button className="res-btn" disabled={!form.date} onClick={next}>
+            <button className="res-btn" disabled={!form.date} onClick={handleDateNext}>
               次へ
             </button>
           </div>
