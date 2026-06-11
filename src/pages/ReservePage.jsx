@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import liff from '@line/liff'
 import './ReservePage.css'
 
 const GAS_URL          = import.meta.env.VITE_GAS_URL          || ''
@@ -8,6 +9,7 @@ const PHONE            = import.meta.env.VITE_FARM_PHONE       || ''
 const EMAIL            = import.meta.env.VITE_FARM_EMAIL       || ''
 const GOOGLE_API_KEY   = import.meta.env.VITE_GOOGLE_API_KEY   || ''
 const CALENDAR_ID      = import.meta.env.VITE_CALENDAR_ID      || ''
+const LIFF_ID          = import.meta.env.VITE_LIFF_ID          || ''
 
 const AM_TIMES = ['9:00', '10:00', '11:00']
 const PM_TIMES = ['13:00', '14:00', '15:00', '16:00']
@@ -60,6 +62,19 @@ export default function ReservePage() {
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState('')
   const [done, setDone] = useState(false)
+  const [liffUserId, setLiffUserId] = useState('')
+
+  useEffect(() => {
+    if (!LIFF_ID) return
+    liff.init({ liffId: LIFF_ID })
+      .then(() => {
+        if (liff.isLoggedIn()) return liff.getProfile()
+      })
+      .then(profile => {
+        if (profile) setLiffUserId(profile.userId)
+      })
+      .catch(err => console.error('LIFF init error:', err))
+  }, [])
 
   useEffect(() => {
     const t = new Date()
@@ -114,12 +129,14 @@ export default function ReservePage() {
     setSubmitting(true)
     setError('')
     try {
+      const isLiff = LIFF_ID && liff.isInClient && liff.isInClient()
       await fetch(GAS_URL, {
         method: 'POST',
         mode: 'no-cors',
         headers: { 'Content-Type': 'text/plain' },
         body: JSON.stringify({
-          source: 'web',
+          source: isLiff && liffUserId ? 'liff' : 'web',
+          userId: liffUserId || undefined,
           date: form.date,
           timeSlot: form.timeSlot,
           arrivalTime: form.arrivalTime,
