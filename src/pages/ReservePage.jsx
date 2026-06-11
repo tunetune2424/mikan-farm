@@ -130,9 +130,8 @@ export default function ReservePage() {
     setError('')
     try {
       const isLiff = LIFF_ID && liff.isInClient && liff.isInClient()
-      await fetch(GAS_URL, {
+      const res = await fetch(GAS_URL, {
         method: 'POST',
-        mode: 'no-cors',
         headers: { 'Content-Type': 'text/plain' },
         body: JSON.stringify({
           source: isLiff && liffUserId ? 'liff' : 'web',
@@ -147,6 +146,15 @@ export default function ReservePage() {
           email: form.email,
         }),
       })
+      const data = await res.json()
+      if (data.status === 'full') {
+        setError('申し訳ありません。この時間帯は満員です。別の日程・時間帯をお試しください。')
+        return
+      }
+      if (data.status === 'duplicate') {
+        setError('この日程はすでにご予約済みです。別の日程をお試しください。')
+        return
+      }
       setDone(true)
     } catch {
       setError('送信に失敗しました。しばらく経ってからもう一度お試しください。')
