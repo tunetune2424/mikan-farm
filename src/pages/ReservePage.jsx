@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import liff from '@line/liff'
 import './ReservePage.css'
 
-const GAS_URL          = import.meta.env.VITE_GAS_URL          || ''
 const LINE_ACCOUNT_URL = import.meta.env.VITE_LINE_ACCOUNT_URL || '#'
 const PHONE            = import.meta.env.VITE_FARM_PHONE       || ''
 const EMAIL            = import.meta.env.VITE_FARM_EMAIL       || ''
@@ -122,17 +121,13 @@ export default function ReservePage() {
 
   async function handleSubmit() {
     if (!validateStep5()) return
-    if (!GAS_URL) {
-      setDone(true)
-      return
-    }
     setSubmitting(true)
     setError('')
     try {
       const isLiff = LIFF_ID && liff.isInClient && liff.isInClient()
-      const res = await fetch(GAS_URL, {
+      const res = await fetch('/api/reserve', {
         method: 'POST',
-        headers: { 'Content-Type': 'text/plain' },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           source: isLiff && liffUserId ? 'liff' : 'web',
           userId: liffUserId || undefined,
@@ -147,10 +142,6 @@ export default function ReservePage() {
         }),
       })
       const data = await res.json()
-      if (data.status === 'full') {
-        setError('申し訳ありません。この時間帯は満員です。別の日程・時間帯をお試しください。')
-        return
-      }
       if (data.status === 'duplicate') {
         setError('この日程はすでにご予約済みです。別の日程をお試しください。')
         return
