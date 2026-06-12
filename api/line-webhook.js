@@ -66,7 +66,7 @@ export default async function handler(req, res) {
       const today = new Date().toISOString().slice(0, 10)
       const { data: reservations } = await supabase
         .from('reservations')
-        .select('date, time_slot, arrival_time')
+        .select('id, date, time_slot, arrival_time, adults, children')
         .eq('line_user_id', userId)
         .gte('date', today)
         .order('date', { ascending: true })
@@ -76,30 +76,45 @@ export default async function handler(req, res) {
         continue
       }
 
-      const lines = reservations.map(r => {
+      if (reservations.length === 1) {
+        const r = reservations[0]
         const [y, m, d] = r.date.split('-')
-        return `📅 ${y}年${Number(m)}月${Number(d)}日 ${r.time_slot} ${r.arrival_time}〜`
-      })
-
-      await replyMessage(replyToken, `キャンセルしたい予約の日付を以下の形式で送ってください。\n\n例：キャンセル 2026-06-15\n\n【予約一覧】\n${lines.join('\n')}`)
-      continue
-    }
-
-    const cancelMatch = text.match(/^キャンセル\s+(\d{4}-\d{2}-\d{2})$/)
-    if (cancelMatch) {
-      const date = cancelMatch[1]
-      const { data: reservation } = await supabase
-        .from('reservations')
-        .select('id, date, time_slot')
-        .eq('line_user_id', userId)
-        .eq('date', date)
-        .maybeSingle()
-
-      if (!reservation) {
-        await replyMessage(replyToken, 'その日付の予約が見つかりませんでした。')
+        await replyMessage(replyToken, `【キャンセル確認】\n\n📅 ${y}年${Number(m)}月${Number(d)}日\n🕐 ${r.time_slot} / ${r.arrival_time}〜\n👥 大人${r.adults}名・子ども${r.children}名\n\nキャンセルするには「キャンセル確認」と送ってください。`)
         continue
       }
 
+      const lines = reservations.map((r, i) => {
+        const [y, m, d] = r.date.split('-')
+        return `${i + 1}. 📅 ${y}年${Number(m)}月${Number(d)}日 ${r.time_slot} ${r.arrival_time}〜`
+      })
+      await replyMessage(replyToken, `キャンセルしたい予約の番号を「キャンセル 1」のように送ってください。\n\n${lines.join('\n')}`)
+      continue
+    }
+
+    if (text === 'キャンセル確認') {
+      const today = new Date().toISOString().slice(0, 10)
+      const { data: reservations } = await supabase
+        .from('reservations')
+        .select('id, date, time_slot')
+        .eq('line_user_id', userId)
+        .gte('date', today)
+        .order('date', { ascending: true })
+
+      if (!reservations || reservations.length === 0) {
+        await replyMessage(replyToken, 'キャンセルできる予約はありません。')
+        continue
+      }
+
+      if (reservations.length > 1) {
+        const lines = reservations.map((r, i) => {
+          const [y, m, d] = r.date.split('-')
+          return `${i + 1}. 📅 ${y}年${Number(m)}月${Number(d)}日 ${r.time_slot}`
+        })
+        await replyMessage(replyToken, `予約が複数あります。番号を指定してください。\n\n${lines.join('\n')}\n\n例：キャンセル 1`)
+        continue
+      }
+
+      const reservation = reservations[0]
       const { error } = await supabase
         .from('reservations')
         .delete()
@@ -110,7 +125,39 @@ export default async function handler(req, res) {
         continue
       }
 
-      const [y, m, d] = date.split('-')
+      const [y, m, d] = reservation.date.split('-')
+      await replyMessage(replyToken, `✅ 予約をキャンセルしました。\n\n📅 ${y}年${Number(m)}月${Number(d)}日 ${reservation.time_slot}`)
+      continue
+    }
+
+    const cancelMatch = text.match(/^キャンセル\s+(\d+)$/)
+    if (cancelMatch) {
+      const index = parseInt(cancelMatch[1], 10) - 1
+      const today = new Date().toISOString().slice(0, 10)
+      const { data: reservations } = await supabase
+        .from('reservations')
+        .select('id, date, time_slot')
+        .eq('line_user_id', userId)
+        .gte('date', today)
+        .order('date', { ascending: true })
+
+      if (!reservations || index < 0 || index >= reservations.length) {
+        await replyMessage(replyToken, '指定した番号の予約が見つかりませんでした。')
+        continue
+      }
+
+      const reservation = reservations[index]
+      const { error } = await supabase
+        .from('reservations')
+        .delete()
+        .eq('id', reservation.id)
+
+      if (error) {
+        await replyMessage(replyToken, 'キャンセルに失敗しました。しばらく経ってからもう一度お試しください。')
+        continue
+      }
+
+      const [y, m, d] = reservation.date.split('-')
       await replyMessage(replyToken, `✅ 予約をキャンセルしました。\n\n📅 ${y}年${Number(m)}月${Number(d)}日 ${reservation.time_slot}`)
       continue
     }
