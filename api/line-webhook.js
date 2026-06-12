@@ -37,6 +37,13 @@ async function replyMessage(replyToken, text) {
   }
 }
 
+async function cancelReservation(id) {
+  return supabase
+    .from('reservations')
+    .update({ status: 'cancelled', cancelled_at: new Date().toISOString() })
+    .eq('id', id)
+}
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).end()
@@ -68,6 +75,7 @@ export default async function handler(req, res) {
         .from('reservations')
         .select('id, date, time_slot, arrival_time, adults, children')
         .eq('line_user_id', userId)
+        .eq('status', 'active')
         .gte('date', today)
         .order('date', { ascending: true })
 
@@ -97,6 +105,7 @@ export default async function handler(req, res) {
         .from('reservations')
         .select('id, date, time_slot')
         .eq('line_user_id', userId)
+        .eq('status', 'active')
         .gte('date', today)
         .order('date', { ascending: true })
 
@@ -115,10 +124,7 @@ export default async function handler(req, res) {
       }
 
       const reservation = reservations[0]
-      const { error } = await supabase
-        .from('reservations')
-        .delete()
-        .eq('id', reservation.id)
+      const { error } = await cancelReservation(reservation.id)
 
       if (error) {
         await replyMessage(replyToken, 'キャンセルに失敗しました。しばらく経ってからもう一度お試しください。')
@@ -138,6 +144,7 @@ export default async function handler(req, res) {
         .from('reservations')
         .select('id, date, time_slot')
         .eq('line_user_id', userId)
+        .eq('status', 'active')
         .gte('date', today)
         .order('date', { ascending: true })
 
@@ -147,10 +154,7 @@ export default async function handler(req, res) {
       }
 
       const reservation = reservations[index]
-      const { error } = await supabase
-        .from('reservations')
-        .delete()
-        .eq('id', reservation.id)
+      const { error } = await cancelReservation(reservation.id)
 
       if (error) {
         await replyMessage(replyToken, 'キャンセルに失敗しました。しばらく経ってからもう一度お試しください。')
@@ -168,6 +172,7 @@ export default async function handler(req, res) {
         .from('reservations')
         .select('date, time_slot, arrival_time, adults, children')
         .eq('line_user_id', userId)
+        .eq('status', 'active')
         .gte('date', today)
         .order('date', { ascending: true })
 

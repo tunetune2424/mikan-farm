@@ -40,6 +40,7 @@ export default async function handler(req, res) {
     .select('id')
     .eq('email', email)
     .eq('date', date)
+    .eq('status', 'active')
     .maybeSingle()
 
   if (checkError) {
