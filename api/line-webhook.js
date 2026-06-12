@@ -69,6 +69,30 @@ export default async function handler(req, res) {
     const userId = event.source.userId
     const replyToken = event.replyToken
 
+    if (text === '予約一覧' && userId === process.env.LINE_OWNER_USER_ID) {
+      const today = new Date().toISOString().slice(0, 10)
+      const { data: reservations } = await supabase
+        .from('reservations')
+        .select('date, time_slot, arrival_time, adults, children, name, tel')
+        .eq('status', 'active')
+        .gte('date', today)
+        .order('date', { ascending: true })
+        .order('time_slot', { ascending: true })
+
+      if (!reservations || reservations.length === 0) {
+        await replyMessage(replyToken, '今後の予約はありません。')
+        continue
+      }
+
+      const lines = reservations.map((r, i) => {
+        const [, m, d] = r.date.split('-')
+        return `${i + 1}. 📅 ${Number(m)}月${Number(d)}日 ${r.time_slot} ${r.arrival_time}〜\n   👤 ${r.name}（大人${r.adults}名・子ども${r.children}名）\n   📞 ${r.tel}`
+      })
+
+      await replyMessage(replyToken, `【予約一覧】${reservations.length}件\n\n${lines.join('\n\n')}`)
+      continue
+    }
+
     if (text === 'キャンセル') {
       const today = new Date().toISOString().slice(0, 10)
       const { data: reservations } = await supabase
