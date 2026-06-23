@@ -1,47 +1,41 @@
 export default function Footer() {
   return (
-    <footer className="footer">
-      <div className="footer-grid">
-        <div>
-          <div className="footer-brand">
-            <span>🍊</span>
-            <span className="footer-brand-text">山原みかん農園</span>
+    <footer>
+      <div className="footer-inner">
+        <div className="footer-top">
+          <div>
+            <p className="footer-en">Yanbaru Mikan Farm</p>
+            <p className="footer-brand-text">山原みかん農園</p>
           </div>
-          <p className="footer-tag">Yanbaru Mikan Farm</p>
-          <p className="footer-desc">やんばるの大自然が育てた、沖縄の恵みをあなたの食卓へ。</p>
+          <p className="footer-desc">
+            やんばるの大自然が育てた、沖縄の恵みを<br />あなたの食卓へ。
+          </p>
         </div>
 
-        <div className="footer-col">
-          <h4>Menu</h4>
-          <ul>
-            <li><a href="#about">農家紹介</a></li>
-            <li><a href="#products">商品</a></li>
-            <li><a href="#philosophy">こだわり</a></li>
-            <li><a href="#contact">お問い合わせ</a></li>
-          </ul>
+        <div className="footer-body">
+          <nav className="footer-nav">
+            <a href="#about">農家紹介</a>
+            <a href="#products">商品</a>
+            <a href="#philosophy">こだわり</a>
+            <a href="#contact">お問い合わせ</a>
+          </nav>
+          <div className="footer-info">
+            <p>沖縄県国頭郡今帰仁村字諸志</p>
+            <p>info@isa-mikan.jp</p>
+            <p>平日 9:00〜17:00</p>
+          </div>
+          <div className="footer-season">
+            <p className="footer-season-label">収穫カレンダー</p>
+            <p>タンカン：1〜2月</p>
+            <p>シークヮーサー：8〜12月</p>
+            <p>温州みかん：11〜1月</p>
+          </div>
         </div>
 
-        <div className="footer-col">
-          <h4>Info</h4>
-          <ul>
-            <li>沖縄県国頭郡今帰仁村字諸志</li>
-            <li>info@isa-mikan.jp</li>
-            <li>9:00〜17:00</li>
-          </ul>
+        <div className="footer-bottom">
+          <p>© {new Date().getFullYear()} 山原みかん農園. All rights reserved.</p>
+          <p className="footer-bottom-en">Okinawa · Nakijin · Japan</p>
         </div>
-
-        <div className="footer-col">
-          <h4>Season</h4>
-          <ul>
-            <li>タンカン：1〜2月</li>
-            <li>シークヮーサー：8〜12月</li>
-            <li>温州みかん：11〜1月</li>
-          </ul>
-        </div>
-      </div>
-
-      <div className="footer-bottom">
-        <p>© {new Date().getFullYear()} 山原みかん農園. All rights reserved.</p>
       </div>
     </footer>
   )

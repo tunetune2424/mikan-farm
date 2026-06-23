@@ -8,8 +8,10 @@ import Contact from './components/Contact'
 import Footer from './components/Footer'
 import CalendarPage from './pages/CalendarPage'
 import ReservePage from './pages/ReservePage'
+import { useScrollAnimation } from './hooks/useScrollAnimation'
 
 function HomePage() {
+  useScrollAnimation()
   return (
     <>
       <Nav />
