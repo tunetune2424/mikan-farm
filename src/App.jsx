@@ -1,4 +1,5 @@
 import { Routes, Route } from 'react-router-dom'
+import PasswordGate from './components/PasswordGate'
 import Nav from './components/Nav'
 import Hero from './components/Hero'
 import About from './components/About'
@@ -27,11 +28,13 @@ function HomePage() {
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/calendar" element={<CalendarPage />} />
-      <Route path="/reserve" element={<ReservePage />} />
-    </Routes>
+    <PasswordGate>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/calendar" element={<CalendarPage />} />
+        <Route path="/reserve" element={<ReservePage />} />
+      </Routes>
+    </PasswordGate>
   )
 }
 

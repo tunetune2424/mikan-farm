@@ -940,6 +940,66 @@ footer {
 
 .hero-bg .ph-label { display: none; }
 
+/* ========= PASSWORD GATE ========= */
+.password-gate {
+  min-height: 100vh;
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  background: var(--bg);
+  padding: 24px;
+}
+.password-gate-card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 8px 30px rgba(58, 45, 30, 0.08);
+  padding: 40px 36px;
+  width: 100%;
+  max-width: 360px;
+}
+.password-gate-title {
+  font-size: 20px;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+.password-gate-desc {
+  font-size: 14px;
+  color: var(--text-soft);
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+.password-gate-input {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 12px 14px;
+  font-size: 15px;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+.password-gate-input:focus {
+  outline: none;
+  border-color: var(--orange);
+}
+.password-gate-error {
+  font-size: 13px;
+  color: #c83c3c;
+  margin-bottom: 8px;
+}
+.password-gate-submit {
+  width: 100%;
+  margin-top: 16px;
+  background: var(--orange);
+  color: #fff;
+  border-radius: 6px;
+  padding: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  transition: opacity 0.2s ease;
+}
+.password-gate-submit:hover { opacity: 0.85; }
+
 /* ========= RESPONSIVE ========= */
 @media (max-width: 900px) {
   .nav { padding: 16px 24px; }
