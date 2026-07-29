@@ -33,12 +33,18 @@ export default function Footer() {
             <a href="#products">シークヮーサー</a>
           </nav>
 
+          <nav className="footer-nav">
+            <p className="footer-col-label">サポート</p>
+            <a href="#faq">よくあるご質問</a>
+            <a href="#contact">お問い合わせ</a>
+            {LINE_ACCOUNT_URL && <a href={LINE_ACCOUNT_URL}>LINEで友だち追加</a>}
+          </nav>
+
           <div className="footer-info">
             <p className="footer-col-label">伊佐みかん園</p>
             <p>沖縄県国頭郡今帰仁村字諸志</p>
             <p>info@isa-mikan.jp</p>
             <p>平日 9:00〜17:00</p>
-            {LINE_ACCOUNT_URL && <a href={LINE_ACCOUNT_URL} className="footer-line-link">LINEで友だち追加</a>}
           </div>
         </div>
 

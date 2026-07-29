@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import tankanImg from '../assets/tankan.jpeg'
 
 const faqs = [
   { q: '注文してからどのくらいで届きますか？', a: '収穫後、即日発送しております。発送後は通常1〜2日程度でお手元に届きます。' },
@@ -13,28 +14,34 @@ export default function Faq() {
   return (
     <section id="faq" className="faq">
       <div className="container">
-        <div className="faq-list">
-          <div className="faq-head fade-up">
-            <p className="section-label center">FAQ</p>
-            <h2 className="section-title serif center">よくあるご質問</h2>
+        <div className="faq-grid">
+          <div className="faq-list">
+            <div className="faq-head fade-up">
+              <p className="section-label">FAQ</p>
+              <h2 className="section-title serif">よくあるご質問</h2>
+            </div>
+
+            {faqs.map((item, i) => {
+              const open = openIndex === i
+              return (
+                <div key={item.q} className={`faq-item fade-up${open ? ' open' : ''}`}>
+                  <button
+                    className="faq-question"
+                    onClick={() => setOpenIndex(open ? null : i)}
+                    aria-expanded={open}
+                  >
+                    <span>{item.q}</span>
+                    <span className="faq-toggle" aria-hidden="true">{open ? '−' : '+'}</span>
+                  </button>
+                  {open && <p className="faq-answer">{item.a}</p>}
+                </div>
+              )
+            })}
           </div>
 
-          {faqs.map((item, i) => {
-            const open = openIndex === i
-            return (
-              <div key={item.q} className={`faq-item fade-up${open ? ' open' : ''}`}>
-                <button
-                  className="faq-question"
-                  onClick={() => setOpenIndex(open ? null : i)}
-                  aria-expanded={open}
-                >
-                  <span>{item.q}</span>
-                  <span className="faq-toggle" aria-hidden="true">{open ? '−' : '+'}</span>
-                </button>
-                {open && <p className="faq-answer">{item.a}</p>}
-              </div>
-            )
-          })}
+          <div className="faq-image fade-up">
+            <img src={tankanImg} alt="収穫したタンカン" loading="lazy" />
+          </div>
         </div>
       </div>
     </section>

@@ -6,35 +6,27 @@ import wenzhouImg from '../assets/unsyuumikan.jpeg'
 const products = [
   {
     img: wenzhouImg,
-    tag: '定番',
     name: '温州みかん',
     desc: '甘みと酸味のバランスが良い定番のみかん。',
     price: '2,800',
-    unit: '円〜（税込）',
   },
   {
     img: tankanImg,
-    tag: '人気No.1',
     name: 'タンカン',
     desc: 'とろける食感と濃厚な甘みが特徴の高糖度種。',
     price: '3,200',
-    unit: '円〜（税込）',
   },
   {
     img: izumiImg,
-    tag: '数量限定',
     name: '伊豆味柑',
     desc: '甘みの中にほどよい酸味が溶け込む希少な在来種。',
     price: '2,500',
-    unit: '円〜（税込）',
   },
   {
     img: sekukwasaImg,
-    tag: '沖縄の恵み',
     name: 'シークヮーサー',
     desc: '爽やかな香りと酸味が沖縄料理に欠かせない一品。',
     price: '1,800',
-    unit: '円〜（税込）',
   },
 ]
 
@@ -52,18 +44,16 @@ export default function Products() {
             <div key={p.name} className="product-card fade-up" style={{ transitionDelay: `${i * 0.08}s` }}>
               <div className="product-card-image">
                 <img src={p.img} alt={p.name} />
-                <span className="product-card-tag">{p.tag}</span>
               </div>
               <div className="product-card-body">
                 <h3 className="product-card-name serif">{p.name}</h3>
                 <p className="product-card-desc">{p.desc}</p>
-                <div className="product-card-price">
-                  <span className="price-num">¥{p.price}</span>
-                  <span className="price-unit">{p.unit}</span>
+                <div className="product-card-footer">
+                  <span className="price-num">¥{p.price}<span className="price-unit">（税込）〜</span></span>
+                  <a href="#contact" className="btn-fill product-card-btn">
+                    商品を見る <span className="arrow">→</span>
+                  </a>
                 </div>
-                <a href="#contact" className="btn-fill product-card-btn">
-                  商品を見る <span className="arrow">→</span>
-                </a>
               </div>
             </div>
           ))}

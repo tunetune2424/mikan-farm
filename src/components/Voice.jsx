@@ -11,6 +11,7 @@ function Stars({ rating }) {
       {Array.from({ length: 5 }, (_, i) => (
         <span key={i} className={i < rating ? 'on' : ''}>★</span>
       ))}
+      <span className="voice-rating">{rating.toFixed(1)}</span>
     </span>
   )
 }
@@ -32,6 +33,10 @@ export default function Voice() {
               <p className="voice-name">{r.name}</p>
             </div>
           ))}
+        </div>
+
+        <div className="voice-cta fade-up">
+          <button type="button" className="btn-line">もっと見る <span className="arrow">→</span></button>
         </div>
       </div>
     </section>

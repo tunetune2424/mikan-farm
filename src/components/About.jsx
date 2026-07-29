@@ -7,10 +7,6 @@ export default function About() {
         <div className="about-grid">
           <div className="about-image fade-up">
             <img src={aboutImg} alt="みかん農場の風景" />
-            <div className="about-year">
-              <span className="about-year-num">1962</span>
-              <span className="about-year-label">創業 · Est.</span>
-            </div>
           </div>
 
           <div className="about-text">

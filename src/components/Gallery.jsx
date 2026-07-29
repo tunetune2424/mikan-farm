@@ -30,6 +30,10 @@ export default function Gallery() {
             </div>
           ))}
         </div>
+
+        <div className="gallery-cta fade-up">
+          <button type="button" className="btn-line">もっと見る <span className="arrow">→</span></button>
+        </div>
       </div>
     </section>
   )

@@ -8,7 +8,6 @@ export default function Hero() {
       </div>
 
       <div className="hero-content">
-        <p className="hero-kicker">OKINAWA · NAKIJIN · EST. 1962</p>
         <h1 className="hero-title">
           太陽を育てる、<br />山のみかん。
         </h1>
