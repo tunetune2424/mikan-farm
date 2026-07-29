@@ -2,8 +2,13 @@ import { Routes, Route } from 'react-router-dom'
 import Nav from './components/Nav'
 import Hero from './components/Hero'
 import About from './components/About'
+import Strengths from './components/Strengths'
 import Products from './components/Products'
+import SeasonalCalendar from './components/SeasonalCalendar'
+import Gallery from './components/Gallery'
 import Philosophy from './components/Philosophy'
+import Voice from './components/Voice'
+import Faq from './components/Faq'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import CalendarPage from './pages/CalendarPage'
@@ -18,8 +23,13 @@ function HomePage() {
       <main>
         <Hero />
         <About />
+        <Strengths />
         <Products />
+        <SeasonalCalendar />
+        <Gallery />
         <Philosophy />
+        <Voice />
+        <Faq />
         <Contact />
       </main>
       <Footer />

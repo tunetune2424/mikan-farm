@@ -7,28 +7,22 @@ export default function Hero() {
         <img src={heroImg} alt="みかん農園" className="hero-bg-img" />
       </div>
 
-      <p className="hero-vert-text">Isa Mikan Farm · やんばるの恵み</p>
-
       <div className="hero-content">
         <p className="hero-kicker">OKINAWA · NAKIJIN · EST. 1962</p>
         <h1 className="hero-title">
-          山の恵み、<br />
-          手でひとつ<br />
-          ひとつ。
+          太陽を育てる、<br />山のみかん。
         </h1>
+        <p className="hero-tagline">
+          愛情をたっぷり注いで育てた、甘くておいしいみかんをお届けします。
+        </p>
         <div className="hero-actions">
-          <p className="hero-tagline">
-            三代続く農家が、収穫した日にお届けします。
-          </p>
-          <a href="#products" className="btn-outline">
+          <a href="#products" className="btn-fill">
             商品を見る <span className="arrow">→</span>
           </a>
+          <a href="#about" className="btn-outline">
+            農園について <span className="arrow">→</span>
+          </a>
         </div>
-      </div>
-
-      <div className="hero-scroll-cue">
-        <span>scroll</span>
-        <div className="line" />
       </div>
     </section>
   )
