@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import tankanImg from '../assets/tankan.jpeg'
+import wenzhouImg from '../assets/unsyuumikan.jpeg'
 
 const faqs = [
   { q: '注文してからどのくらいで届きますか？', a: '収穫後、即日発送しております。発送後は通常1〜2日程度でお手元に届きます。' },
@@ -40,7 +40,7 @@ export default function Faq() {
           </div>
 
           <div className="faq-image fade-up">
-            <img src={tankanImg} alt="収穫したタンカン" loading="lazy" />
+            <img src={wenzhouImg} alt="収穫した温州みかん" loading="lazy" />
           </div>
         </div>
       </div>

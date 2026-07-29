@@ -1,6 +1,6 @@
-# 伊佐みかん園
+# 山原みかん農園
 
-沖縄・やんばるで三代続くみかん農家のWebサイト。タンカン・シークヮーサーを産地直送で届けるブランドサイトです。
+三代続くみかん農家のWebサイト。温州みかん・せとか・不知火を産地直送で届けるブランドサイトです。
 
 **[→ デモサイト（Vercel）](https://mikan-farm.vercel.app/)**
 
@@ -40,9 +40,14 @@ VITE_EMAILJS_TEMPLATE_ID=your_template_id
 |-----------|------|
 | Hero | メインビジュアル・キャッチコピー |
 | About | 農園紹介・三代の歴史 |
-| Products | タンカン・シークヮーサー・温州みかん |
-| Philosophy | こだわり（土・手摘み・即日出荷） |
-| Contact | お問い合わせフォーム（EmailJS） |
+| Strengths | 3つのこだわり（低農薬・手摘み・産地直送） |
+| Products | 温州みかん・せとか・不知火 |
+| SeasonalCalendar | 旬の柑橘カレンダー |
+| Gallery | 農園の風景 |
+| Philosophy | こだわり詳細（土・手摘み・即日出荷） |
+| Voice | お客様の声 |
+| Faq | よくあるご質問 |
+| Contact | お問い合わせフォーム（EmailJS）・地図 |
 
 ## ビルド
 

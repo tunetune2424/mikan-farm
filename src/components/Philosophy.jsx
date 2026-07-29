@@ -16,19 +16,19 @@ export default function Philosophy() {
             低農薬。<br />手摘み。<br />当日出荷。
           </p>
           <p className="philosophy-quote-sub">
-            三つのこだわりが、やんばるの味をあなたの元へ届けます。
+            三つのこだわりが、山の味をあなたの元へ届けます。
           </p>
         </div>
 
         <div className="philo-item fade-up">
           <div className="philo-image">
-            <img src={soilImg} alt="やんばるの土" />
+            <img src={soilImg} alt="山の土" />
           </div>
           <div className="philo-text">
             <span className="philo-num">01</span>
             <span className="philo-heading-en">Soil</span>
-            <h3 className="philo-heading serif">やんばるの土を育てる</h3>
-            <p className="philo-body">化学肥料に頼らず、やんばるの森の落ち葉や有機物を活かした土づくりを実践しています。豊かな微生物が根を支え、柑橘本来の甘みと香りを引き出します。</p>
+            <h3 className="philo-heading serif">山の土を育てる</h3>
+            <p className="philo-body">化学肥料に頼らず、山の森の落ち葉や有機物を活かした土づくりを実践しています。豊かな微生物が根を支え、柑橘本来の甘みと香りを引き出します。</p>
             <div className="philo-tags">
               <span className="philo-tag">低農薬</span>
               <span className="philo-tag">有機肥料</span>
@@ -44,7 +44,7 @@ export default function Philosophy() {
             <span className="philo-num">02</span>
             <span className="philo-heading-en">Harvest</span>
             <h3 className="philo-heading serif">手摘みにこだわる</h3>
-            <p className="philo-body">タンカンは皮が薄く傷つきやすいため、すべて手作業で一つひとつ丁寧に収穫します。熟し具合を手のひらで確かめながら、最高の状態で摘み取ります。</p>
+            <p className="philo-body">みかんは皮が薄く傷つきやすいため、すべて手作業で一つひとつ丁寧に収穫します。熟し具合を手のひらで確かめながら、最高の状態で摘み取ります。</p>
             <div className="philo-tags">
               <span className="philo-tag">手作業</span>
               <span className="philo-tag">完熟収穫</span>
@@ -60,7 +60,7 @@ export default function Philosophy() {
             <span className="philo-num">03</span>
             <span className="philo-heading-en">Delivery</span>
             <h3 className="philo-heading serif">収穫即日出荷</h3>
-            <p className="philo-body">収穫したその日のうちに箱詰めして発送します。沖縄から全国へ、新鮮な状態でお届けすることが私たちの鮮度保証です。</p>
+            <p className="philo-body">収穫したその日のうちに箱詰めして発送します。産地から全国へ、新鮮な状態でお届けすることが私たちの鮮度保証です。</p>
             <div className="philo-tags">
               <span className="philo-tag">産地直送</span>
               <span className="philo-tag">鮮度保証</span>

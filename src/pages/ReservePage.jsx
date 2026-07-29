@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import liff from '@line/liff'
+import { BRAND_NAME } from '../siteConfig'
 import './ReservePage.css'
 
 const LINE_ACCOUNT_URL = import.meta.env.VITE_LINE_ACCOUNT_URL || '#'
@@ -401,7 +402,7 @@ function CompletePage({ lineUrl, phone, email }) {
         <Link to="/" className="res-back">← HPに戻る</Link>
         <div className="res-title-wrap">
           <span className="res-emoji">🍊</span>
-          <h1 className="res-title">伊佐みかん園</h1>
+          <h1 className="res-title">{BRAND_NAME}</h1>
         </div>
       </header>
       <div className="res-body">

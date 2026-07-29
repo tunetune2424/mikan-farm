@@ -1,11 +1,11 @@
 const MONTHS = ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月']
 
-// 開始月・終了月は 1〜12。開始 > 終了 の場合は年をまたぐ旬（例: 11月〜1月）として扱う。
+// 開始月・終了月は 1〜12。開始 > 終了 の場合は年をまたぐ旬（例: 10月〜1月）として扱う。
 const fruits = [
-  { name: '温州みかん', icon: '🍊', start: 11, end: 1 },
-  { name: 'タンカン', icon: '🍊', start: 1, end: 2 },
-  { name: '伊豆味柑', icon: '🍊', start: 2, end: 3 },
-  { name: 'シークヮーサー', icon: '🍋', start: 8, end: 12 },
+  { name: '温州みかん', icon: '🍊', start: 10, end: 1 },
+  { name: 'せとか', icon: '🍊', start: 2, end: 4 },
+  { name: '不知火', icon: '🍊', start: 2, end: 3 },
+  { name: 'レモン', icon: '🍋', start: 9, end: 5 },
 ]
 
 function segments(start, end) {

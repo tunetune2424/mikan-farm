@@ -1,11 +1,12 @@
 import { useState } from 'react'
 import emailjs from '@emailjs/browser'
+import { ADDRESS, POSTAL_CODE, EMAIL, HOURS } from '../siteConfig'
 
 const PUBLIC_KEY  = import.meta.env.VITE_EMAILJS_PUBLIC_KEY  || ''
 const SERVICE_ID  = import.meta.env.VITE_EMAILJS_SERVICE_ID  || ''
 const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || ''
 
-const MAP_QUERY = encodeURIComponent('沖縄県国頭郡今帰仁村字諸志')
+const MAP_QUERY = encodeURIComponent(ADDRESS)
 
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', message: '' })
@@ -86,7 +87,7 @@ export default function Contact() {
                 />
               </div>
               <div className="field">
-                <label htmlFor="contact-message">メッセージ</label>
+                <label htmlFor="contact-message">お問い合わせ内容</label>
                 <textarea
                   id="contact-message"
                   name="message"
@@ -110,20 +111,20 @@ export default function Contact() {
             <div className="contact-info">
               <div className="contact-info-item">
                 <span className="contact-info-label">Location</span>
-                <span className="contact-info-value">沖縄県国頭郡今帰仁村字諸志</span>
+                <span className="contact-info-value">{POSTAL_CODE} {ADDRESS}</span>
               </div>
               <div className="contact-info-item">
                 <span className="contact-info-label">Email</span>
-                <span className="contact-info-value">info@isa-mikan.jp</span>
+                <span className="contact-info-value">{EMAIL}</span>
               </div>
               <div className="contact-info-item">
                 <span className="contact-info-label">Hours</span>
-                <span className="contact-info-value">平日 9:00〜17:00</span>
+                <span className="contact-info-value">{HOURS}</span>
               </div>
             </div>
             <div className="contact-map">
               <iframe
-                title="伊佐みかん園の地図"
+                title="農園の地図"
                 src={`https://maps.google.com/maps?q=${MAP_QUERY}&z=13&output=embed`}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"

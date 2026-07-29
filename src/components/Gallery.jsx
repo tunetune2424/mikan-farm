@@ -1,16 +1,16 @@
 import farmImg from '../assets/farm.png'
 import harvestImg from '../assets/harvest.png'
 import deliveryImg from '../assets/delivery.png'
-import soilImg from '../assets/soil.jpeg'
 import aboutImg from '../assets/about.jpeg'
 import tankanImg from '../assets/tankan.jpeg'
 
+// ご家族の農園写真がまだ無いため、6枚目はプレースホルダーです。
+// 実際の写真が用意でき次第、他の写真と同じ形で差し替えてください。
 const photos = [
   { src: farmImg, alt: '農園の風景' },
   { src: harvestImg, alt: '手摘み収穫の様子' },
-  { src: tankanImg, alt: '収穫したタンカン' },
+  { src: tankanImg, alt: '収穫したみかん' },
   { src: aboutImg, alt: '農園から見える海' },
-  { src: soilImg, alt: 'やんばるの土' },
   { src: deliveryImg, alt: '収穫即日出荷の様子' },
 ]
 
@@ -29,6 +29,9 @@ export default function Gallery() {
               <img src={p.src} alt={p.alt} loading="lazy" />
             </div>
           ))}
+          <div className="gallery-item gallery-item-placeholder fade-up" style={{ transitionDelay: '0.25s' }}>
+            <span>ご家族の写真<br />準備中</span>
+          </div>
         </div>
 
         <div className="gallery-cta fade-up">

@@ -1,7 +1,8 @@
-import tankanImg from '../assets/tankan.jpeg'
-import sekukwasaImg from '../assets/shikuwasa.jpg'
-import izumiImg from '../assets/izumibeni.jpeg'
 import wenzhouImg from '../assets/unsyuumikan.jpeg'
+// せとか・不知火の実物写真がまだ無いため、近い色味の既存写真を仮置きしています。
+// 実際の写真が用意でき次第、下記の import を差し替えてください。
+import setokaPlaceholder from '../assets/tankan.jpeg'
+import shiranuiPlaceholder from '../assets/izumibeni.jpeg'
 
 const products = [
   {
@@ -11,22 +12,18 @@ const products = [
     price: '2,800',
   },
   {
-    img: tankanImg,
-    name: 'タンカン',
+    img: setokaPlaceholder,
+    name: 'せとか',
     desc: 'とろける食感と濃厚な甘みが特徴の高糖度種。',
+    price: '3,800',
+    isPlaceholderImage: true,
+  },
+  {
+    img: shiranuiPlaceholder,
+    name: '不知火（しらぬい）',
+    desc: '濃厚な甘みとジューシーさが人気の品種。',
     price: '3,200',
-  },
-  {
-    img: izumiImg,
-    name: '伊豆味柑',
-    desc: '甘みの中にほどよい酸味が溶け込む希少な在来種。',
-    price: '2,500',
-  },
-  {
-    img: sekukwasaImg,
-    name: 'シークヮーサー',
-    desc: '爽やかな香りと酸味が沖縄料理に欠かせない一品。',
-    price: '1,800',
+    isPlaceholderImage: true,
   },
 ]
 
@@ -39,11 +36,12 @@ export default function Products() {
           <h2 className="section-title serif center">旬のみかん</h2>
         </div>
 
-        <div className="product-grid">
+        <div className="product-grid product-grid-3">
           {products.map((p, i) => (
             <div key={p.name} className="product-card fade-up" style={{ transitionDelay: `${i * 0.08}s` }}>
               <div className="product-card-image">
                 <img src={p.img} alt={p.name} />
+                {p.isPlaceholderImage && <span className="product-card-placeholder-tag">写真は仮画像</span>}
               </div>
               <div className="product-card-body">
                 <h3 className="product-card-name serif">{p.name}</h3>
@@ -61,7 +59,7 @@ export default function Products() {
 
         <div className="products-cta fade-up">
           <a href="#contact" className="btn-line">
-            ご注文・お問い合わせはこちら <span className="arrow">→</span>
+            すべての商品を見る <span className="arrow">→</span>
           </a>
         </div>
       </div>
