@@ -4,6 +4,7 @@ import Hero from './components/Hero'
 import About from './components/About'
 import Strengths from './components/Strengths'
 import Products from './components/Products'
+import GiftService from './components/GiftService'
 import ScheduleGift from './components/ScheduleGift'
 import AppBenefits from './components/AppBenefits'
 import News from './components/News'
@@ -24,6 +25,7 @@ function HomePage() {
         <About />
         <Strengths />
         <Products />
+        <GiftService />
         <ScheduleGift />
         <AppBenefits />
         <News />
