@@ -705,7 +705,7 @@ section {
   display: grid;
   grid-template-columns: 1.4fr 1fr;
   gap: 24px;
-  align-items: stretch;
+  align-items: start;
 }
 .schedule-card, .gift-card {
   background: #fff;
