@@ -6,6 +6,7 @@ import Strengths from './components/Strengths'
 import Products from './components/Products'
 import GiftService from './components/GiftService'
 import ScheduleGift from './components/ScheduleGift'
+import FavoritesFeature from './components/FavoritesFeature'
 import AppBenefits from './components/AppBenefits'
 import News from './components/News'
 import InstagramFeed from './components/InstagramFeed'
@@ -27,6 +28,7 @@ function HomePage() {
         <Products />
         <GiftService />
         <ScheduleGift />
+        <FavoritesFeature />
         <AppBenefits />
         <News />
         <InstagramFeed />

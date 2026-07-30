@@ -1,12 +1,6 @@
 // マイページ関連の機能は今回デザインのみの実装で、実際には動作しません。
+// 「お気に入り登録」は FavoritesFeature.jsx で詳細セクションとして別途実装しています。
 const items = [
-  {
-    title: 'お気に入り登録',
-    desc: '気になる商品を保存して、まとめてお買い物できます。',
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M12 20s-7-4.4-9.4-8.8C1 8 2.4 5 5.6 4.6c2-.3 3.7.8 4.9 2.6 1.2-1.8 3-2.9 4.9-2.6C18.6 5 20 8 20.4 11.2 22.9 15.6 12 20 12 20Z" /></svg>
-    ),
-  },
   {
     title: 'あとで買う',
     desc: 'カートに入れる前に保存。買い忘れを防げます。',
