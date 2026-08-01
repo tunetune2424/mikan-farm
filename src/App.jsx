@@ -4,11 +4,12 @@ import Hero from './components/Hero'
 import About from './components/About'
 import Strengths from './components/Strengths'
 import Products from './components/Products'
-import SeasonalCalendar from './components/SeasonalCalendar'
-import Gallery from './components/Gallery'
-import Philosophy from './components/Philosophy'
-import Voice from './components/Voice'
-import Faq from './components/Faq'
+import GiftService from './components/GiftService'
+import ScheduleGift from './components/ScheduleGift'
+import FavoritesFeature from './components/FavoritesFeature'
+import AppBenefits from './components/AppBenefits'
+import News from './components/News'
+import InstagramFeed from './components/InstagramFeed'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import CalendarPage from './pages/CalendarPage'
@@ -25,11 +26,12 @@ function HomePage() {
         <About />
         <Strengths />
         <Products />
-        <SeasonalCalendar />
-        <Gallery />
-        <Philosophy />
-        <Voice />
-        <Faq />
+        <GiftService />
+        <ScheduleGift />
+        <FavoritesFeature />
+        <AppBenefits />
+        <News />
+        <InstagramFeed />
         <Contact />
       </main>
       <Footer />

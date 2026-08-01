@@ -1,35 +1,48 @@
 const items = [
   {
-    title: '低農薬栽培',
-    desc: 'できるだけ農薬を使わず、自然の力を生かして育てています。',
-    icon: (
-      <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M24 42c0-11 6-24 16-30-2 12-2 22-16 30Z" />
-        <path d="M24 42c0-11-6-24-16-30 2 12 2 22 16 30Z" />
-        <path d="M24 42V20" />
-      </svg>
-    ),
-  },
-  {
-    title: '手摘み収穫',
-    desc: '一つひとつ丁寧に手で摘み、最適なタイミングで収穫します。',
-    icon: (
-      <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="24" cy="16" r="7" />
-        <path d="M13 40c0-8 5-14 11-14s11 6 11 14" />
-        <path d="M24 30v6" />
-      </svg>
-    ),
-  },
-  {
     title: '産地直送',
-    desc: '採れたてをそのまま農園から直送。新鮮な美味しさをお届けします。',
+    sub: '採れたてをそのままお届け',
     icon: (
-      <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="4" y="16" width="24" height="16" rx="1.5" />
-        <path d="M28 21h8l8 7v8h-16z" />
-        <circle cx="14" cy="36" r="3.2" />
-        <circle cx="36" cy="36" r="3.2" />
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="2" y="8" width="12" height="8" rx="1" /><path d="M14 11h4l4 3.5V16h-8z" />
+        <circle cx="7" cy="18.5" r="1.6" /><circle cx="17" cy="18.5" r="1.6" />
+      </svg>
+    ),
+  },
+  {
+    title: '低農薬栽培',
+    sub: '安心・安全なみかん作り',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 21c0-5.5 3-12 8-15-1 6-1 11-8 15Z" /><path d="M12 21c0-5.5-3-12-8-15 1 6 1 11 8 15Z" />
+      </svg>
+    ),
+  },
+  {
+    title: '三代続く農園',
+    sub: '1962年創業の信頼と実績',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M4 21V10l8-6 8 6v11" /><path d="M9 21v-6h6v6" />
+      </svg>
+    ),
+  },
+  {
+    title: '丁寧な手仕事',
+    sub: 'ひとつひとつ手で選別',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="7" r="3" /><path d="M5 21c0-4 3-7 7-7s7 3 7 7" />
+      </svg>
+    ),
+  },
+  {
+    title: 'ギフト対応',
+    sub: 'のし・メッセージカード無料',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="3" y="9" width="18" height="12" rx="1" /><path d="M3 13h18" /><path d="M12 9v12" />
+        <path d="M12 9c-2 0-3.5-1-3.5-2.5S9.5 4 11 4c1.2 0 1.8 1 1 2.2M12 9c2 0 3.5-1 3.5-2.5S14.5 4 13 4c-1.2 0-1.8 1-1 2.2" />
       </svg>
     ),
   },
@@ -39,17 +52,14 @@ export default function Strengths() {
   return (
     <section id="strengths" className="strengths">
       <div className="container">
-        <div className="strengths-head fade-up">
-          <p className="section-label center">Strength</p>
-          <h2 className="section-title serif center">私たちの3つのこだわり</h2>
-        </div>
-
-        <div className="strengths-grid">
+        <div className="strengths-row">
           {items.map((item, i) => (
-            <div key={item.title} className="strength-card fade-up" style={{ transitionDelay: `${i * 0.1}s` }}>
-              <div className="strength-icon">{item.icon}</div>
-              <h3 className="strength-title serif">{item.title}</h3>
-              <p className="strength-desc">{item.desc}</p>
+            <div key={item.title} className="strength-item fade-up" style={{ transitionDelay: `${i * 0.06}s` }}>
+              <div className="strength-icon-sm">{item.icon}</div>
+              <div>
+                <p className="strength-item-title">{item.title}</p>
+                <p className="strength-item-sub">{item.sub}</p>
+              </div>
             </div>
           ))}
         </div>
