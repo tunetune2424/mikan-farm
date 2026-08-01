@@ -1,14 +1,27 @@
-const items = [
-  {
-    title: '産地直送',
-    sub: '採れたてをそのままお届け',
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="2" y="8" width="12" height="8" rx="1" /><path d="M14 11h4l4 3.5V16h-8z" />
-        <circle cx="7" cy="18.5" r="1.6" /><circle cx="17" cy="18.5" r="1.6" />
-      </svg>
-    ),
-  },
+import { SHOP_ENABLED } from '../siteConfig'
+
+const shippingItem = {
+  title: '産地直送',
+  sub: '採れたてをそのままお届け',
+  icon: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="2" y="8" width="12" height="8" rx="1" /><path d="M14 11h4l4 3.5V16h-8z" />
+      <circle cx="7" cy="18.5" r="1.6" /><circle cx="17" cy="18.5" r="1.6" />
+    </svg>
+  ),
+}
+
+const reserveItem = {
+  title: 'みかん狩り体験',
+  sub: 'ご予約制で農園を開放',
+  icon: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="3" y="4" width="18" height="17" rx="2" /><path d="M3 9h18" /><path d="M8 2v4M16 2v4" /><path d="M8 13h2M14 13h2M8 17h2" />
+    </svg>
+  ),
+}
+
+const coreItems = [
   {
     title: '低農薬栽培',
     sub: '安心・安全なみかん作り',
@@ -36,23 +49,30 @@ const items = [
       </svg>
     ),
   },
-  {
-    title: 'ギフト対応',
-    sub: 'のし・メッセージカード無料',
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="3" y="9" width="18" height="12" rx="1" /><path d="M3 13h18" /><path d="M12 9v12" />
-        <path d="M12 9c-2 0-3.5-1-3.5-2.5S9.5 4 11 4c1.2 0 1.8 1 1 2.2M12 9c2 0 3.5-1 3.5-2.5S14.5 4 13 4c-1.2 0-1.8 1-1 2.2" />
-      </svg>
-    ),
-  },
 ]
+
+const giftItem = {
+  title: 'ギフト対応',
+  sub: 'のし・メッセージカード無料',
+  icon: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="3" y="9" width="18" height="12" rx="1" /><path d="M3 13h18" /><path d="M12 9v12" />
+      <path d="M12 9c-2 0-3.5-1-3.5-2.5S9.5 4 11 4c1.2 0 1.8 1 1 2.2M12 9c2 0 3.5-1 3.5-2.5S14.5 4 13 4c-1.2 0-1.8 1-1 2.2" />
+    </svg>
+  ),
+}
+
+// 商品発送の体制が整うまでは「産地直送」「ギフト対応」を隠し、
+// 代わりに今すぐ利用できる「みかん狩り体験」を表示する。
+const items = SHOP_ENABLED
+  ? [shippingItem, ...coreItems, giftItem]
+  : [...coreItems, reserveItem]
 
 export default function Strengths() {
   return (
     <section id="strengths" className="strengths">
       <div className="container">
-        <div className="strengths-row">
+        <div className="strengths-row" style={{ gridTemplateColumns: `repeat(${items.length}, 1fr)` }}>
           {items.map((item, i) => (
             <div key={item.title} className="strength-item fade-up" style={{ transitionDelay: `${i * 0.06}s` }}>
               <div className="strength-icon-sm">{item.icon}</div>

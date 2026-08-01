@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { BRAND_NAME, BRAND_NAME_EN } from '../siteConfig'
+import { BRAND_NAME, BRAND_NAME_EN, SHOP_ENABLED } from '../siteConfig'
 
 const LINE_ACCOUNT_URL = import.meta.env.VITE_LINE_ACCOUNT_URL || ''
 
@@ -38,27 +38,37 @@ export default function Footer() {
             <p className="footer-brand-text">{BRAND_NAME}</p>
           </div>
           <p className="footer-desc">
-            三代続くみかん農園から、旬の美味しさを<br />産地直送でお届けします。
+            {SHOP_ENABLED
+              ? <>三代続くみかん農園から、旬の美味しさを<br />産地直送でお届けします。</>
+              : <>三代続くみかん農園が、<br />丹精込めてみかんを育てています。</>}
           </p>
         </div>
 
-        <div className="footer-body footer-body-5">
+        <div className={`footer-body ${SHOP_ENABLED ? 'footer-body-5' : 'footer-body-3'}`}>
           <nav className="footer-nav">
             <p className="footer-col-label">メニュー</p>
             <a href="#hero">ホーム</a>
             <a href="#about">農園について</a>
-            <a href="#products">商品一覧</a>
-            <a href="#products">みかんの種類</a>
-            <a href="#news">お知らせ</a>
+            {SHOP_ENABLED ? (
+              <>
+                <a href="#products">商品一覧</a>
+                <a href="#products">みかんの種類</a>
+                <a href="#news">お知らせ</a>
+              </>
+            ) : (
+              <a href="#instagram">インスタグラム</a>
+            )}
           </nav>
 
-          <nav className="footer-nav">
-            <p className="footer-col-label">商品一覧</p>
-            <a href="#products">温州みかん</a>
-            <a href="#products">せとか</a>
-            <a href="#products">不知火（しらぬい）</a>
-            <a href="#products">レモン</a>
-          </nav>
+          {SHOP_ENABLED && (
+            <nav className="footer-nav">
+              <p className="footer-col-label">商品一覧</p>
+              <a href="#products">温州みかん</a>
+              <a href="#products">せとか</a>
+              <a href="#products">不知火（しらぬい）</a>
+              <a href="#products">レモン</a>
+            </nav>
+          )}
 
           <nav className="footer-nav">
             <p className="footer-col-label">サポート</p>
@@ -67,13 +77,15 @@ export default function Footer() {
             <a href="/calendar">みかん狩り予約</a>
           </nav>
 
-          <nav className="footer-nav">
-            <p className="footer-col-label">ご利用ガイド</p>
-            <a href="#contact">お支払い方法</a>
-            <a href="#contact">ギフトについて</a>
-            <a href="#contact">送料・配送について</a>
-            <a href="#contact">特定商取引法に基づく表記</a>
-          </nav>
+          {SHOP_ENABLED && (
+            <nav className="footer-nav">
+              <p className="footer-col-label">ご利用ガイド</p>
+              <a href="#contact">お支払い方法</a>
+              <a href="#contact">ギフトについて</a>
+              <a href="#contact">送料・配送について</a>
+              <a href="#contact">特定商取引法に基づく表記</a>
+            </nav>
+          )}
 
           <div className="footer-newsletter">
             <p className="footer-col-label">お得な情報をお届けします</p>

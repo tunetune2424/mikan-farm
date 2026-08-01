@@ -1,5 +1,6 @@
+import { Link } from 'react-router-dom'
 import aboutImg from '../assets/farm.png'
-import { BRAND_NAME } from '../siteConfig'
+import { BRAND_NAME, SHOP_ENABLED } from '../siteConfig'
 
 export default function About() {
   return (
@@ -18,9 +19,15 @@ export default function About() {
             <p className="about-text-body fade-up" style={{ transitionDelay: '0.2s' }}>
               私たち{BRAND_NAME}は、祖父の代から三代にわたりこの地でみかんを育ててきました。山の斜面に広がる段々畑、海からのやさしい風、そしてたっぷりの太陽。恵まれた自然の中で、ひとつひとつ丁寧に育てています。
             </p>
-            <a href="#products" className="btn-line">
-              商品一覧を見る <span className="arrow">→</span>
-            </a>
+            {SHOP_ENABLED ? (
+              <a href="#products" className="btn-line">
+                商品一覧を見る <span className="arrow">→</span>
+              </a>
+            ) : (
+              <Link to="/calendar" className="btn-line">
+                みかん狩りの予約はこちら <span className="arrow">→</span>
+              </Link>
+            )}
           </div>
         </div>
       </div>

@@ -15,6 +15,7 @@ import Footer from './components/Footer'
 import CalendarPage from './pages/CalendarPage'
 import ReservePage from './pages/ReservePage'
 import { useScrollAnimation } from './hooks/useScrollAnimation'
+import { SHOP_ENABLED } from './siteConfig'
 
 function HomePage() {
   useScrollAnimation()
@@ -25,12 +26,16 @@ function HomePage() {
         <Hero />
         <About />
         <Strengths />
-        <Products />
-        <GiftService />
-        <ScheduleGift />
-        <FavoritesFeature />
-        <AppBenefits />
-        <News />
+        {SHOP_ENABLED && (
+          <>
+            <Products />
+            <GiftService />
+            <ScheduleGift />
+            <FavoritesFeature />
+            <AppBenefits />
+            <News />
+          </>
+        )}
         <InstagramFeed />
         <Contact />
       </main>
